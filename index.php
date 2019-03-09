@@ -1,15 +1,25 @@
+<?php
 
+$default[0] = "$2,431,370.59";
+
+echo Form::open(array('action' => 'm2/index', 'method' => 'post'));
+
+echo Form::button('frmbutton', 'What If', array('class' => 'btn btn-default'));
+
+echo Form::close();
+
+?>
 
 <main>
 
 <!--   <div = class = full_col> -->
     <div id="homePage">
 
-	
+
 	<section class="homeItem">
 		<table>
 			<tr>
-			<th style="color:#719E1E">Load</th>
+			<th style="color:#719E1E">Load This</th>
 			<?php
 				echo Form::select('Saves', 'none', array('1'=>'Default'));
 				echo Form::submit('a', 'Save', array('onClick' => \Model\Report::save_data('default.csv')));
@@ -17,13 +27,14 @@
 			</tr>
 		</table>
 	</section>
-	
+
     <section class="homeItem">
-		
+
       <table>
         <tr>
           <th style="color:#719E1E">Expected Medicare Reimbursement:</th>
-          <td style="color:#FFFFFF">$2,431,370.59</td>
+          <td style="color:#FFFFFF"><?php echo Form::label('', 'name') . ' ';
+          echo Form::input('name', $default[0], array('class' => 'form-control'))?></td>
         </tr>
 
       </table>
@@ -44,7 +55,7 @@
     </section>
 
     <section class="homeItem">
-    
+
       <table>
 
         <tr>
@@ -152,11 +163,11 @@
     </table>
 
   </div>
-  
+
   </div>
 
   <div id="hcahpsEfficiency">
-  
+
   <div id="hcahps">
 
     <table id="hcahpsTable">
@@ -250,7 +261,7 @@
   </div>
 
   </div>
-  
+
 </div>
 
 </main>

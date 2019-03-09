@@ -5,10 +5,10 @@ namespace Model;
 class Report extends \Model {
 
 	public static function get_data($filename) {
-		$csv = array_map('str_getcsv', file($filename));	
+		$csv = array_map('str_getcsv', file($filename));
 		return $csv;
 	}
-	
+
 	public static function get_Report_headers(){
 		return  'expected_reimbursement, VBP, Adjusted_Reimbursement, '.
 				//Safey
@@ -27,7 +27,7 @@ class Report extends \Model {
 				'B_MSPB1, T_MSPB1, S_MSPB1'
 				."/n";
 	}
-	
+
 	public static function get_hardCoded_Record(){
 		return
 			'2431370.59, 24730.51, 2456101.10,'. //reimbursement
@@ -49,25 +49,47 @@ class Report extends \Model {
 			'8/10'.
 			"\n"; //score
 	}
-	
+
 	public static function save_data($fileName){
 		$headers = Report::get_Report_headers();
 		$data = Report::get_hardCoded_Record();
-		
-	
-		
-		
+
+
+
+
 		$csv_handler = fopen(DOCROOT .'default.csv', 'w+');
 		fwrite($csv_handler, $headers . $data);
 		fclose($csv_handler);
 	}
-	
+
 	public static function load_data($fileName){
-		
-		
+
+
 	}
-	
-	
-	
-	
+
+	// Get a data set from CSV file
+
+	public static function get_set($name) {
+		$query_results = array_map('str_getcsv', file(DOCROOT . 'data.csv'));
+		$person = array();
+
+		foreach($query_results as $line) {
+			if ($name == $line[0]) {
+				array_push($person, $line[1]);
+
+
+		}
+}
+		return $person;
+
+
+}
+
+public static function calculate($name) {
+	return $name . "yoyo";
+}
+
+
+
+
 }
