@@ -9,7 +9,7 @@
 	<section class="homeItem">
 		<table>
 			<tr>
-			<th style="color:#719E1E">Load</th>
+			<th style="color:#719E1E">Load This</th>
 			<?php
 				echo Form::select('Saves', 'none', array('1'=>'Default'));
 				echo Form::submit('a', 'Save', array('onClick' => \Model\Report::save_data('default.csv')));
