@@ -27,7 +27,9 @@ then
 	echo "Done"
 
 	echo "Copying Resource Files..."
-	cp default.csv ~/local_html/ct310/m2/
+	cp ./default.csv ~/local_html/ct310/m2/
+	cp -rf ./images ~/local_html/ct310/m2/
 	chmod 755 ~/local_html/ct310/m2/default.csv
+	chmod -R 755 ~/local_html/ct310/m2/images/
 	echo "Done"
 fi
