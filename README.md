@@ -1,4 +1,4 @@
-## Files and File Locations##
+## Files and File Locations ##
 
 * site.css - local_html/ct310/m2/assets/css/  
 * m2.php - fuel/app/classes/controller/  
