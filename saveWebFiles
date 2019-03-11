@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -p "This script was made by a noob. Make sure you've backup any changes before proceeding. Would you like to continue? (y/n)" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo "Saving Assests..."
+	cp  ~/local_html/ct310/m2/assets/css/site.css ./site.css
+	echo "Done"
+
+	echo "Saving Controller Files..."
+	cp  ~/fuel/app/classes/controller/m2.php ./m2.php
+	echo "Done"
+
+	echo "Saving Model Files..."
+	cp  ~/fuel/app/classes/model/report.php ./report.php
+	echo "Done"
+
+	echo "Saving View Files..."
+	cp ~/fuel/app/views/m2/about.php ./about.php 
+	cp ~/fuel/app/views/m2/index.php  ./index.php 
+	cp ~/fuel/app/views/m2/more_information.php ./more_information.php
+	echo "Done"
+
+	echo "Saving Resource Files..."
+	cp  ~/local_html/ct310/m2/default.csv default.csv
+	echo "Done"
+fi
