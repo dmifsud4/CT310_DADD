@@ -24,6 +24,6 @@ then
 
 	echo "Saving Resource Files..."
 	cp  ~/local_html/ct310/m2/default.csv default.csv
-	cp -rf ~/local_html/ct310/m2/images/ ./images
+	cp -rf ~/local_html/ct310/m2/images/ .
 	echo "Done"
 fi
