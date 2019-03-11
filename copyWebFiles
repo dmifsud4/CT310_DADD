@@ -4,7 +4,7 @@ read -p "This script was made by a noob. Make sure you've backup any changes bef
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo "Copying Assests..."
+	echo "Copying Assets..."
 	cp ./site.css ~/local_html/ct310/m2/assets/css/
 	chmod 755 ~/local_html/ct310/m2/assets/css/site.css
 	echo "Done"
