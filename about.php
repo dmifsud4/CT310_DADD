@@ -27,7 +27,10 @@
     
     <div class="imgPerson">
         <h1 class="aboutName">David Sant</h1>
-        <img src="/~dofe6096/ct310/images/profile.jpg" alt="David Sant" class="aboutImg">
+        <img src="/~dofe6096/ct310/images/Pic-David_Sant2.jpg" alt="David Sant" class="aboutImg">
+	<p class="aboutText">
+		I am a 4th year Computer Science student in the Human Centered Computing Concentration. I live off campus in a mobile home community. I am married and have one step-son. I have 1 dog (a corgi named Ein) and 2 cats (Shasti and Sy).
+	</p>
     </div>
     
     <section class="aboutPerson">
