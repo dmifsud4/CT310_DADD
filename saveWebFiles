@@ -6,6 +6,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo "Saving Assets..."
 	cp  ~/local_html/ct310/m2/assets/css/site.css ./site.css
+	cp  ~/local_html/ct310/m2/assets/js/javascript.js ./javascript.js
+	cp  ~/local_html/ct310/m2/assets/js/jquery.js ./jquery.js
 	echo "Done"
 
 	echo "Saving Controller Files..."
@@ -20,6 +22,7 @@ then
 	cp ~/fuel/app/views/m2/about.php ./about.php 
 	cp ~/fuel/app/views/m2/index.php  ./index.php 
 	cp ~/fuel/app/views/m2/more_information.php ./more_information.php
+	cp ~/fuel/app/views/template.php ./template.php
 	echo "Done"
 
 	echo "Saving Resource Files..."
