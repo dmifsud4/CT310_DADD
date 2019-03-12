@@ -9,6 +9,7 @@
 * javascript.js - local_html/ct310/m2/assets/js
 * jquery.js - local_html/ct310/m2/assets/js
 * default.csv - local_html/ct310/m2/
+* template.php - fuel/app/views/
 
 
 ## Copy/Save Scripts ##
