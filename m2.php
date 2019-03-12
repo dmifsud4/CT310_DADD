@@ -1,6 +1,7 @@
 <?php
 
 use \Model\Report;
+\Package::load('email');
 
 class Controller_M2 extends Controller_Template {
 
@@ -25,17 +26,66 @@ class Controller_M2 extends Controller_Template {
 		$this->template->content = View::forge('m2/more_information', $data);
 	}
 	
-	public function action_save_data($fileName){
+	/*
+        Email Stuff:
+	*/
+	
+    public static function post_sendEmail() {
+	
+        $fromEmail = Input::post('fromEmail');
+        $message = Input::post('message');
+	
+        $email = Email::forge();
+        
+        $email->from($fromEmail, 'Default User');
+        
+//         $email->to('dofe6096@rams.colostate.edu', 'Dorian Ferrer');
+        
+        $email->to(array('dofe6096@rams.colostate.edu' => 'Dorian Ferrer',
+                        'ct310@cs.colostate.edu' => 'CT 310'));
+        
+        $email->subject('DemoRequest_Team7_DADD');
+        
+        $email->body($message);
+	
+        try
+        {
+            $email->send();
+        }
+        catch(\EmailValidationFailedException $e)
+        {
+            // The validation failed
+        }
+        catch(\EmailSendingFailedException $e)
+        {
+            // The driver could not send the email
+        }
+	
+        Response::redirect('index.php/m2/more_information.php');
+
+	}
+	
+	/*
+        Main Form Stuff:
+	*/
+	
+    public function action_save_data($fileName){
 		Report::save_data('report.csv');
 	}
 	
-	public function get_home(){
-			
+	public function action_list() {
+        $data = array();
+        
+        $data['people'][] = Form::get_people();
+        
+        $this->template->title = '';
 	}
 	
-	public function post_home() {
-
-		
+	public function get_add() {
+	
+	}
+	
+	public function post_add() {
 	
 	}
 	
