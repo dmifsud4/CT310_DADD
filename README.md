@@ -5,7 +5,9 @@
 * report.php - fuel/app/classes/model/  
 * about.php - fuel/app/views/m2/  
 * index.php - fuel/app/views/m2/  
-* more_information.php - fuel/app/views/m2/  
+* more_information.php - fuel/app/views/m2/
+* javascript.js - local_html/ct310/m2/assets/js
+* jquery.js - local_html/ct310/m2/assets/js
 * default.csv - local_html/ct310/m2/
 
 
