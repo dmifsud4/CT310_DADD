@@ -1,345 +1,370 @@
-/* ALL PAGES */
-
-
-/* Grid */
-/* Think of this as the layer underneath everything else */
-/* Using 3 columns */
-
-.wrapper {
-  display: grid;
-  grid-template-areas:
-  'header'
-  'safety1'
-  'clinical1'
-  'hcahps1'
-  'efficiency1'
-  'footer';
-}
-
 body {
-
-    grid-area: body;
-    text-align: center;
-    font-family:Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
-    background-color:#B3B9BB;
-
+  background-color: #D9E1E3;
+  font-family: Palatino, "Times New Roman", Times, serif;
+  margin: 0px;
 }
-
-/* Header */
-
-header {
-    
-    grid-area: header;
-    font-size: 24pt;
-    text-align: center;
-    font-family:Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
-    background-color:#354352;
-    color:#FFFFFF;
-
-}
-
-/* Navigation Bar */
-
-header nav ul {
-/*	padding-right: 375px;
-    padding-left: 375px;*/
-    padding-bottom: 16px;
-    margin: 0px;
-	text-align: center;
-	list-style:none;
-}
-
-header nav li {
-	display: inline;
-}
-
-header nav a{
-	display: inline-block;
-    background-color: #236192;
-	color: #FFFFFF;
-	letter-spacing: 1px;
-	text-decoration: none;
-	padding: 8px;
-}
-
-header nav a:hover{
-	color: #1F2226;
-	text-shadow: 0 0 0;
-	background-color: #2E94B5;
-}
-
-footer {
-  grid-area: footer;
-}
-
-main {
-    grid-area: body;
-}
-
-section {
-  background-color:#236192;
-  border-style: groove;
-  border-collapse: collapse;
-  border-color:#354352;
-}
-
-#hospitalName {
-
-    font-style: italic;
-    font-weight: bold;
-
-}
-
-
 
 /*
-#contents {
+ * Header:
+ */
 
-    width: 90%;
-
-}
-*/
-
-
-
-/* Home page */
-
-/*.full_col {
-  grid-column: 1 / 3;
-}*/
-
-#homePage {
-
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
-    grid-column-gap: 20px;
-/*     background-color: #2196F3; */
-    padding: 10px;
-
+header {
+  background-color: rgba(35, 97, 146, 0.65);
+  border: hidden;
+  border-radius: 10px;
+  font-size: 28pt;
+  text-align: center;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5%;
+  padding-bottom: 8px;
+  display: none;
 }
 
-#homepage2 {
-
-    display: grid;
-    grid-template-areas:
-    'a'
-    'b';
-
+#top {
+  padding: 8px;
+  display: flex;
+  overflow: auto;
 }
 
-/*.homeItem {
-    
-    background-color: #236192;
-    
-}*/
-
-/*#pre {
-
-    font-size: large;
-    border-style: groove;
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
-
+#companyLogo {
+  padding-left: 16px;
+  padding-top: 8px;
+}
+#companyLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-#bonus {
-
-    font-size: large;
-    border-style: groove;
-    width: 280px;
-    margin-bottom: 8px;
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
-
+#companyNav {
+  width: 100%;
+  padding-top: 8%;
+}
+#companyNav ul {
+  list-style: none;
+  margin: 8px 0px 8px 0px;
+  padding: 0;
+}
+#companyNav ul li {
+  font-size: 3.5vw;
+  display: table;
 }
 
-#post {
+#li1 {
+  margin: 0px auto 10% auto;
+}
+#li2 {
+  margin: 10% auto 0px auto;
+}
 
-    font-size: large;
-    border-style: groove;
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
+#a1 {
+  margin-right: 5%;
+}
+#a2 {
+  margin-left: 5%;
+}
 
-}*/
+#top ul li a {
+  border: hidden;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: #567817;
+  color: #FFF;
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+}
+
+#main {
+  width: 95%;
+  margin: 16px auto 16px auto;
+  background-color: rgba(101, 141, 27, 0.65);
+  border: hidden;
+  border-radius: 10px;
+  display: none;
+}
+
+/*
+ * Index Page:
+ */
+
+#indexPage {
+  padding: 8px;
+}
+#indexPage h3 {
+  text-decoration: underline;
+  font-size: 2.5vw;
+  text-align: center;
+}
+#indexPage p {
+  font-size: 18pt;
+}
 
 #VBP {
+  font-size: 3vw;
+  text-align: right;
+/*   float: right; */
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 24px;
+  border-spacing: 8px;
+}
+#VBP td {
+  color: #FFF;
+}
 
-    clear: both;
+#test {
+  width: 6vw;
+}
+#baseBox {
+  width: 17vw;
+}
+#formButtons {
+  background-color: rgba(55, 166, 251, 0.50);
+  border: hidden;
+  border-radius: 10px;
+  width: 75%;
+  text-align: left;
+  padding: 8px;
+  margin-bottom: 16px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#formButtons button {
+  width: 15%;
+  height: 50px;
+  font-size: 1.5vw;
+  border: hidden;
+  border-radius: 8px;
+}
+#formButtons p {
+  text-align: justify;
+/*   width: 75%; */
+  margin-left: auto;
+  margin-right: auto;
+}
+#formButtons h4 {
+  text-align: center;
+  font-size: 3vw;
+/*   width: 75%; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#filler {
     text-align: center;
-    margin-top: 25px;
-    height: 60px;
-
+}
+#filler button:hover {
+  background-color: #FFF;
+}
+#filler form {
+  display: inline-flex;
+  height: 100%
+}
+#filler form button {
+  width: 50%;
+  margin-right: 16px;
 }
 
-/* End */
-
-#safetyClinical {
-
-    display: grid;
-    grid-template-areas:
-    'a b';
-
+#loadButton {
+  margin-bottom: 4px;
+  margin-right: 8px;
+}
+#whatIfButton {
+  margin-left: 8px;
+}
+#save_button {
+  display: none;
+}
+#whatIfContainer {
+  display: none;
+  border: hidden;
+  border-radius: 8px;
+  padding: 4px;
+  background-color: rgb(221, 221, 221);
+}
+#whatIfContainer p {
+  font-size: 1.5vw;
+  text-align: center;
+  margin: 0;
+}
+#submitButton {
+  display: none;
 }
 
-#hcahpsEfficiency {
 
-    display: grid;
-    grid-template-areas:
-    'a b';
-
+.mainTables {
+  border-spacing: 8px;
+  width: 100%;
+  font-size: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+.mainTables th {
+  text-align: right;
+}
+.mainTables th, .mainTables td {
+  border: 2px solid black;
+  padding: 8px;
+}
+.mainRow th {
+  font-size: 2.5vw;
+}
+.tRow1 th {
+  text-align: center;
 }
 
-/* Safety Stuff */
-
-table#safetyTable {
-
-    grid-area: safety1;
-    border-style: groove;
-    /*border-collapse: collapse;*/
-    text-align: left;
-/*     font-size: 14pt; */
-    width: 625px;
-    height: 150px;
-    margin-top: 20px;
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
-
+#hcahpsTable {
+  clear: both;
+  font-size: 1.25vw;
+}
+#hcahpsTable th, #hcahpsTable td {
+  padding: 8px 2px 8px 2px;
 }
 
-#safety {
-
-
-    margin-left: auto;
-    margin-right: 0;
-/*     grid-area: a; */
-
+#doubleTable {
+  display: inline-flex;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* Efficiency Stuff */
-
-table#clinicalTable {
-
-    border-style: groove;
-    border-collapse: collapse;
-    text-align: left;
-    width: 625px;
-    height: 150px;
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
-
+#clinicalTable {
+  width: 60%;
+  font-size: 2.0vw;
 }
 
-#clinical {
-
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: auto;
-/*     grid-area: b; */
-
+#efficiencyTable {
+  width: 30%;
+  height: 100%;
+  font-size: 2.0vw;
 }
 
-/* HCAHPS Stuff */
-
-table#hcahpsTable {
-
-    border-style: groove;
-    border-collapse: collapse;
-    text-align: left;
-    width: 1000px;
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
-
-}
-
-#hcahps {
-
-
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: 0;
-/*     grid-area: c; */
-
-}
-
-/* Clinical Care Stuff */
-
-table#efficiencyTable {
-
-    border-style: groove;
-/*     border-collapse: collapse; */
-    text-align: left;
-    width: 200px;
-    /*position: relative;
-    left: 375px;*/
-    background-color:#236192;
-    border-color:#354352;
-    color:#FFFFFF;
-
-}
-
-#efficiency {
-
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: auto;
-/*     grid-area: d; */
-
-}
-
-/* End */
-
-/* About Page */
+/*
+ * About Page:
+ */
 
 #aboutPage {
-
+  padding-top: 16px;
+}
+#aboutPage h1 {
+  text-align: center;
+  font-size: 4vw;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#aboutPage h3 {
+  text-align: center;
+}
+#containerA {
   display: grid;
-  grid-template-areas:
-  'a b'
-  'c d'
-  'e f'
-  'g h';
-
+  grid-template-areas: 
+  'aa bb'
+  'cc dd'
+  'ee ff'
+  'gg hh';
+}
+#aboutPage img {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.aboutText {
-    
-    font-size: 18pt;
-    text-align: justify;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    
+#div1 {
+  grid-area: aa;
+  text-align: justify;
+  font-size: 2.5vw;
+  padding-left: 10%;
+  padding-top: 17%;
+}
+#div2 {
+  grid-area: bb;
+  font-size: 3.0vw;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div3 {
+  grid-area: cc;
+  font-size: 3.0vw;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div4 {
+  grid-area: dd;
+  text-align: justify;
+  font-size: 2.5vw;
+  padding-right: 10%;
+  padding-top: 17%;
+}
+#div5 {
+  grid-area: ee;
+  text-align: justify;
+  font-size: 2.5vw;
+  padding-left: 10%;
+  padding-top: 17%;
+}
+#div6 {
+  grid-area: ff;
+  font-size: 3.0vw;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div7 {
+  grid-area: gg;
+  font-size: 3.0vw;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div8 {
+  grid-area: hh;
+  text-align: justify;
+  font-size: 2.5vw;
+  padding-right: 10%;
+  padding-top: 17%;
 }
 
-.imgPerson {
-    
-/*     background-color:  */
+/*
+ * More Information Page:
+ */
 
-/*    background-color:#236192;
-    border-color:#354352;*/
-
+#moreInfoPage {
+  text-align: center;
+  padding: 2%;
+}
+#moreInfoPage label {
+  font-size: 2.5vw;
+}
+#moreInfoPage button {
+  width: 100%;
+  height: 30px;
+}
+#moreInfoPage input, #moreInfoPage textarea {
+  width: 95%;
+  padding: 12px 20px;
+  font-size: 2vw;
+  border: hidden;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.aboutImg {
-    
-    width: 50%;
-    height: 50%;
-    
-}
+/*
+ * Footer:
+ */
 
-.aboutPerson {
-    
-    width: 75%;
-    margin-top: 40px;
-    
+footer {
+  width: 95%;
+  background-color: rgba(35, 97, 146, 0.65);
+  text-align: center;
+  display: none;
+  margin: 0px auto 2.5% auto;
+  border: hidden;
+  border-radius: 10px;
 }
-
-/* More Information Page */
