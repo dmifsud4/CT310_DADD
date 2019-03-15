@@ -2,6 +2,8 @@
  Load Button Stuff:
  */
 
+var DIR = '/~dofe6096/';
+
 function load_choosefile(str) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -9,7 +11,7 @@ function load_choosefile(str) {
             document.getElementById("filler").innerHTML = str + this.responseText + "</select>";
         }
     };
-    xmlhttp.open("GET", "/~dofe6096/ct310/m2/XMLSaves/script.php", true);
+    xmlhttp.open("GET", DIR + "ct310/m2/XMLSaves/script.php", true);
     xmlhttp.send();
 }
 
@@ -30,13 +32,14 @@ function load_xml(filename) {
             load_safety(xmlDoc, "HCAHPS");
         }
     };
-    xhttp.open("GET", "/~dofe6096/ct310/m2/XMLSaves/" + $("#dropDown option:selected").text(), true);
+    xhttp.open("GET", DIR + "ct310/m2/XMLSaves/" + $("#dropDown option:selected").text(), true);
     xhttp.send();
 }
 
 function load_safety(xmlDoc, tableType) {
     var x = xmlDoc.getElementsByTagName(tableType)[0].getElementsByTagName("CATEGORY");
     var row = document.getElementsByClassName("tRowOtherS");
+    var j = 0;
     if (tableType == "VBP") {
         row = document.getElementsByClassName("tRowOtherV");
     }
@@ -50,8 +53,13 @@ function load_safety(xmlDoc, tableType) {
         row = document.getElementsByClassName("tRowOtherH");
     }
     for (var i = 0; i < x.length; i++) {
-        for (var j = 0; j < row[i].getElementsByTagName("td").length; j++) {
-            row[i].getElementsByTagName("td")[j].innerHTML = x[i].children[j+1].childNodes[0].nodeValue;
+        var count = 1;
+        if (row[i].getElementsByTagName("td").length > row[2].getElementsByTagName("td").length) {
+            j = row[i].getElementsByTagName("td").length/2;
+        }
+        for (/*var j = 0*/; j < row[i].getElementsByTagName("td").length; j++) {
+            row[i].getElementsByTagName("td")[j].innerHTML = x[i].children[count].childNodes[0].nodeValue;
+            count += 1;
         }
     }
 }
@@ -73,6 +81,8 @@ function whatif_sequence() {
     $('#loadButton').hide();
     $('#whatIfButton').hide();
     $('#submitButton').css('display', 'inline');
+    $('.ayyyyyyy').hide();
+    $('.form-control').show();
     
 //     $('#row1 td').html("<input name='baseR' class='form-control' id='baseBox'>");
     
