@@ -2,7 +2,7 @@
  Load Button Stuff:
  */
 
-var DIR = '/~dofe6096/';
+var DIR = '/~dmifsud/';
 
 function load_choosefile(str) {
     var xmlhttp = new XMLHttpRequest();
@@ -68,13 +68,200 @@ function load_safety(xmlDoc, tableType) {
  What If Button Stuff:
  */
 
+
 //TODO:
 function whatif_calculate() {
     $('#submitButton').hide();
     $("#save_button").css('display', 'inline');
     $('#whatIfContainer').css('display', 'inline-block');
     
-    
+    var dom_scores = [], saf = 0, care = 0, eff = 0, tps = 0, hca = 0;
+
+    for (var i = 0; i < 8; i++) {
+    	 //( 9 * (Performance Period Rate - Acheivment Threshold) / (Benchmark - Acheivment Threshold) ) + 0.5
+    	 //( 10 * (Performance Period Rate - Baseline Period Rate) / (Benchmark - Baseline Period Rate) ) - 0.5
+    	 var a, imp;
+//achievement safety
+    	 if (parseFloat(document.getElementById("row3").getElementsByClassName("form-control")[i].value) <= parseFloat(document.getElementsByClassName("tRowOtherS")[2].getElementsByTagName("td")[i].innerHTML)){
+			 a = 10;    	 
+    	 } else if (parseFloat(document.getElementById("row3").getElementsByClassName("form-control")[i].value) > parseFloat(document.getElementsByClassName("tRowOtherS")[3].getElementsByTagName("td")[i].innerHTML)){
+			 a = 0;    	 
+    	 } else {
+    	 	 a = ( 9 * ((parseFloat(document.getElementById("row3").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementsByClassName("tRowOtherS")[3].getElementsByTagName("td")[i].innerHTML)) / (parseFloat(document.getElementsByClassName("tRowOtherS")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementsByClassName("tRowOtherS")[3].getElementsByTagName("td")[i].innerHTML)))) + 0.5
+    	 }
+//improvement safety
+    	 if (parseFloat(document.getElementById("row3").getElementsByClassName("form-control")[i].value) <= parseFloat(document.getElementsByClassName("tRowOtherS")[2].getElementsByTagName("td")[i].innerHTML)){
+			 imp = 9;    	 
+    	 } else if (parseFloat(document.getElementById("row3").getElementsByClassName("form-control")[i].value) >= parseFloat(document.getElementById("row2").getElementsByClassName("form-control")[i].value)) {
+			 imp = 0
+    	 } else {
+		 	 imp = ( 10 * ((parseFloat(document.getElementById("row3").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementById("row2").getElementsByClassName("form-control")[i].value)) / (parseFloat(document.getElementsByClassName("tRowOtherS")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementById("row2").getElementsByClassName("form-control")[i].value)))) - 0.5    
+    	 }
+    	 document.getElementsByClassName("tRowOtherS")[4].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 document.getElementsByClassName("tRowOtherS")[5].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/9";
+    	 if (a < imp) {
+    	 	 document.getElementsByClassName("tRowOtherS")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+    	 	 saf += (Math.round(imp));
+    	 }
+    	 else if(a == imp){
+		 	 document.getElementsByClassName("tRowOtherS")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+		 	 saf += (Math.round(imp));
+    	 }
+    	 else {
+    	 	 document.getElementsByClassName("tRowOtherS")[6].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 	 saf += (Math.round(a));
+    	 }
+    }
+    console.log("unweighted safety: " + ((saf / 80) * 100));
+    dom_scores.push(((saf / 80) * 100) * .25);
+    for (var i = 0; i < 3; i++) {
+    	 //( 9 * (Performance Period Rate - Acheivment Threshold) / (Benchmark - Acheivment Threshold) ) + 0.5
+    	 //( 10 * (Performance Period Rate - Baseline Period Rate) / (Benchmark - Baseline Period Rate) ) - 0.5
+    	 var a, imp;
+//achievement care
+    	 if (parseFloat(document.getElementById("row5").getElementsByClassName("form-control")[i].value) >= parseFloat(document.getElementsByClassName("tRowOtherC")[2].getElementsByTagName("td")[i].innerHTML)){
+			 a = 10;    	 
+    	 } else if (parseFloat(document.getElementById("row5").getElementsByClassName("form-control")[i].value) < parseFloat(document.getElementsByClassName("tRowOtherC")[3].getElementsByTagName("td")[i].innerHTML)){
+			 a = 0;    	 
+    	 } else {
+    	 	 a = ( 9 * ((parseFloat(document.getElementById("row5").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementsByClassName("tRowOtherC")[3].getElementsByTagName("td")[i].innerHTML)) / (parseFloat(document.getElementsByClassName("tRowOtherC")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementsByClassName("tRowOtherC")[3].getElementsByTagName("td")[i].innerHTML)))) + 0.5
+    	 }
+//improvement care
+    	 if (parseFloat(document.getElementById("row5").getElementsByClassName("form-control")[i].value) >= parseFloat(document.getElementsByClassName("tRowOtherC")[2].getElementsByTagName("td")[i].innerHTML)){
+			 imp = 9;    	 
+    	 } else if (parseFloat(document.getElementById("row5").getElementsByClassName("form-control")[i].value) <= parseFloat(document.getElementById("row4").getElementsByClassName("form-control")[i].value)) {
+			 imp = 0
+    	 } else {
+		 	 imp = ( 10 * ((parseFloat(document.getElementById("row5").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementById("row4").getElementsByClassName("form-control")[i].value)) / (parseFloat(document.getElementsByClassName("tRowOtherC")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementById("row4").getElementsByClassName("form-control")[i].value)))) - 0.5    
+    	 }
+    	 document.getElementsByClassName("tRowOtherC")[4].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 document.getElementsByClassName("tRowOtherC")[5].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/9";
+    	 if (a < imp) {
+    	 	 document.getElementsByClassName("tRowOtherC")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+    	 	 care += Math.round(imp);
+    	 }
+    	 else if(a == imp){
+		 	 document.getElementsByClassName("tRowOtherC")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+		 	 care += Math.round(imp);
+    	 }
+    	 else {
+    	 	 document.getElementsByClassName("tRowOtherC")[6].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 	 care += Math.round(a);
+    	 }
+    }
+    console.log("unweighted care: " + ((care / 10) * 100));
+    dom_scores.push(((care / 30) * 100) * .25);
+    for (var i = 0; i < 1; i++) {
+    	 //( 9 * (Performance Period Rate - Acheivment Threshold) / (Benchmark - Acheivment Threshold) ) + 0.5
+    	 //( 10 * (Performance Period Rate - Baseline Period Rate) / (Benchmark - Baseline Period Rate) ) - 0.5
+    	 var a, imp;
+//achievement efficiency
+    	 if (parseFloat(document.getElementById("row7").getElementsByClassName("form-control")[i].value) <= parseFloat(document.getElementsByClassName("tRowOtherE")[2].getElementsByTagName("td")[i].innerHTML)){
+			 a = 10;    	 
+    	 } else if (parseFloat(document.getElementById("row7").getElementsByClassName("form-control")[i].value) > parseFloat(document.getElementsByClassName("tRowOtherE")[3].getElementsByTagName("td")[i].innerHTML)){
+			 a = 0;    	 
+    	 } else {
+    	 	 a = ( 9 * ((parseFloat(document.getElementById("row7").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementsByClassName("tRowOtherE")[3].getElementsByTagName("td")[i].innerHTML)) / (parseFloat(document.getElementsByClassName("tRowOtherE")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementsByClassName("tRowOtherE")[3].getElementsByTagName("td")[i].innerHTML)))) + 0.5
+    	 }
+//improvement efficiency
+    	 if (parseFloat(document.getElementById("row7").getElementsByClassName("form-control")[i].value) <= parseFloat(document.getElementsByClassName("tRowOtherE")[2].getElementsByTagName("td")[i].innerHTML)){
+			 imp = 9;    	 
+    	 } else if (parseFloat(document.getElementById("row7").getElementsByClassName("form-control")[i].value) >= parseFloat(document.getElementById("row6").getElementsByClassName("form-control")[i].value)) {
+			 imp = 0
+    	 } else {
+		 	 imp = ( 10 * ((parseFloat(document.getElementById("row7").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementById("row6").getElementsByClassName("form-control")[i].value)) / (parseFloat(document.getElementsByClassName("tRowOtherE")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementById("row6").getElementsByClassName("form-control")[i].value)))) - 0.5    
+    	 }
+    	 document.getElementsByClassName("tRowOtherE")[4].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 document.getElementsByClassName("tRowOtherE")[5].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/9";
+    	 if (a < imp) {
+    	 	 document.getElementsByClassName("tRowOtherE")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+    	 	 eff += Math.round(imp);
+    	 }
+    	 else if(a == imp){
+		 	 document.getElementsByClassName("tRowOtherE")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+		 	 eff += Math.round(imp);
+    	 }
+    	 else {
+    	 	 document.getElementsByClassName("tRowOtherE")[6].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 	 eff += Math.round(a);
+    	 }
+    	 
+    }
+    console.log("unweighted efficiency: " + ((eff / 10) * 100));
+    dom_scores.push(((eff / 10) * 100) * .25)
+    var minA = 10;
+    var arr = [];
+    for (var i = 0; i < 8; i++) {
+    	 //( 9 * (Performance Period Rate - Acheivment Threshold) / (Benchmark - Acheivment Threshold) ) + 0.5
+    	 //( 10 * (Performance Period Rate - Baseline Period Rate) / (Benchmark - Baseline Period Rate) ) - 0.5
+    	 var a, imp;
+//achievement hcahps
+    	 if (parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) >= parseFloat(document.getElementsByClassName("tRowOtherH")[2].getElementsByTagName("td")[i].innerHTML)){
+			 a = 10;    	 
+    	 } else if (parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) < parseFloat(document.getElementsByClassName("tRowOtherH")[3].getElementsByTagName("td")[i].innerHTML)){
+			 a = 0;    	 
+    	 } else {
+    	 	 a = ( 9 * ((parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementsByClassName("tRowOtherH")[3].getElementsByTagName("td")[i].innerHTML)) / (parseFloat(document.getElementsByClassName("tRowOtherH")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementsByClassName("tRowOtherH")[3].getElementsByTagName("td")[i].innerHTML)))) + 0.5
+    	 }
+//improvement hcahps
+    	 if (parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) >= parseFloat(document.getElementsByClassName("tRowOtherH")[2].getElementsByTagName("td")[i].innerHTML)){
+			 imp = 9;    	 
+    	 } else if (parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) <= parseFloat(document.getElementById("row8").getElementsByClassName("form-control")[i].value)) {
+			 imp = 0
+    	 } else {
+		 	 imp = ( 10 * ((parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementById("row8").getElementsByClassName("form-control")[i].value)) / (parseFloat(document.getElementsByClassName("tRowOtherH")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementById("row8").getElementsByClassName("form-control")[i].value)))) - 0.5    
+    	 }
+    	 document.getElementsByClassName("tRowOtherH")[5].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 document.getElementsByClassName("tRowOtherH")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/9";
+    	 if (a < imp) {
+    	 	 document.getElementsByClassName("tRowOtherH")[7].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+    	 	 hca += Math.round(imp);
+    	 	 if (Math.round(imp) < minA){
+			 	 minA = Math.round(imp);
+			 	 arr = [];
+			 	 arr.push(i);    	 	 
+    	 	 } else if (Math.round(imp) == minA) {
+				 arr.push(i);    	 	 
+    	 	 }
+    	 }
+    	 else if(a == imp){
+		 	 document.getElementsByClassName("tRowOtherH")[7].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
+		 	 hca += Math.round(imp);
+		 	 if (Math.round(imp) < minA){
+			 	 minA = Math.round(imp);
+			 	 arr = [];
+			 	 arr.push(i);    	 	 
+    	 	 } else if (Math.round(imp) == minA) {
+				 arr.push(i);    	 	 
+    	 	 }
+    	 }
+    	 else {
+    	 	 document.getElementsByClassName("tRowOtherH")[7].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
+    	 	 hca += Math.round(a);
+    	 	 if (Math.round(a) < minA){
+			 	 minA = Math.round(a);
+			 	 arr = [];
+			 	 arr.push(i);    	 	 
+    	 	 } else if (Math.round(a) == minA) {
+				 arr.push(i);    	 	 
+    	 	 }
+    	 }
+    }
+    var minFinal = 10000;
+    //(Your hospital performance period score – floor)/(National achievement threshold – floor)
+    for (var i = 0; i < arr.length; i++) {
+    	 if ((parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[arr[i]].value) - parseFloat(document.getElementsByClassName("tRowOtherH")[4].getElementsByTagName("td")[arr[i]].innerHTML)) / (parseFloat(document.getElementsByClassName("tRowOtherH")[3].getElementsByTagName("td")[arr[i]].innerHTML) - parseFloat(document.getElementsByClassName("tRowOtherH")[4].getElementsByTagName("td")[arr[i]].innerHTML)) < minFinal){
+			 minFinal = (parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[arr[i]].value) - parseFloat(document.getElementsByClassName("tRowOtherH")[4].getElementsByTagName("td")[arr[i]].innerHTML)) / (parseFloat(document.getElementsByClassName("tRowOtherH")[3].getElementsByTagName("td")[arr[i]].innerHTML) - parseFloat(document.getElementsByClassName("tRowOtherH")[4].getElementsByTagName("td")[arr[i]].innerHTML));
+    	 }
+ 	 }
+ 	 var HDS = ((20 * minFinal) - 0.5) + hca;
+ 	 console.log("unweighted hcahps: " + HDS);
+ 	 dom_scores.push(HDS * .25);
+ 	 console.log(dom_scores);
+ 	 for (var c = 0; c < 4; c++) {
+	 	  	 tps += dom_scores[c];
+ 	 }
+ 	 console.log(tps);
 }
 
 function whatif_sequence() {
@@ -82,7 +269,7 @@ function whatif_sequence() {
     $('#whatIfButton').hide();
     $('#submitButton').css('display', 'inline');
     $('.ayyyyyyy').hide();
-    $('.form-control').show();
+    $('.form-control1').show();
     
 //     $('#row1 td').html("<input name='baseR' class='form-control' id='baseBox'>");
     
