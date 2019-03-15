@@ -112,7 +112,6 @@ function whatif_calculate() {
     	 	 saf += (Math.round(a));
     	 }
     }
-    console.log("unweighted safety: " + ((saf / 80) * 100));
     dom_scores.push(((saf / 80) * 100) * .25);
     for (var i = 0; i < 3; i++) {
     	 //( 9 * (Performance Period Rate - Acheivment Threshold) / (Benchmark - Acheivment Threshold) ) + 0.5
@@ -149,7 +148,6 @@ function whatif_calculate() {
     	 	 care += Math.round(a);
     	 }
     }
-    console.log("unweighted care: " + ((care / 10) * 100));
     dom_scores.push(((care / 30) * 100) * .25);
     for (var i = 0; i < 1; i++) {
     	 //( 9 * (Performance Period Rate - Acheivment Threshold) / (Benchmark - Acheivment Threshold) ) + 0.5
@@ -187,7 +185,6 @@ function whatif_calculate() {
     	 }
     	 
     }
-    console.log("unweighted efficiency: " + ((eff / 10) * 100));
     dom_scores.push(((eff / 10) * 100) * .25)
     var minA = 10;
     var arr = [];
@@ -255,13 +252,15 @@ function whatif_calculate() {
     	 }
  	 }
  	 var HDS = ((20 * minFinal) - 0.5) + hca;
- 	 console.log("unweighted hcahps: " + HDS);
  	 dom_scores.push(HDS * .25);
  	 console.log(dom_scores);
  	 for (var c = 0; c < 4; c++) {
 	 	  	 tps += dom_scores[c];
  	 }
- 	 console.log(tps);
+ 	 var twopercent = parseFloat(document.getElementById('baseBox').value) * 0.02;
+ 	 var after_sub = parseFloat(document.getElementById('baseBox').value) - twopercent;
+ 	 var amr = after_sub + (twopercent * (tps / 100));
+ 	 document.getElementById("VBP").getElementsByClassName("tRowOtherV")[1].getElementsByTagName("td")[0].innerHTML = "$" + (twopercent * (tps / 100));
 }
 
 function whatif_sequence() {
