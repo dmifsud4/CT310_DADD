@@ -115,12 +115,14 @@ header {
   color: #FFF;
 }
 
-#test {
+.form-control {
   width: 6vw;
+  display: none;
 }
 #baseBox {
   width: 17vw;
 }
+
 #formButtons {
   background-color: rgba(55, 166, 251, 0.50);
   border: hidden;
