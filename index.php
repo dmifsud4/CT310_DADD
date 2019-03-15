@@ -356,14 +356,14 @@
 
         <tr class="tRowOtherH">
           <th>Threshold:</th>
-          <td>0.01470588235</td>
-          <td>3.644981413</td>
-          <td>-1.54518664</td>
-          <td>0.8193812557</td>
-          <td>-1.975218659</td>
-          <td>-1.353731343</td>
-          <td>1.913518887</td>
-          <td>4.049825784</td>
+          <td>78.52</td>
+          <td>80.44</td>
+          <td>65.08</td>
+          <td>51.45</td>
+          <td>63.37</td>
+          <td>65.6</td>
+          <td>86.6</td>
+          <td>70.23</td>
         </tr>
         <tr class="tRowOtherH">
           <th>Floor Values:</th>
