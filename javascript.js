@@ -1,3 +1,4 @@
+
 function fade_in(one, two, three) {
     one.fadeIn("slow");
     setTimeout(function(){ two.fadeIn("slow"); }, 500);
@@ -36,7 +37,6 @@ $(document).ready(function(){
   $('#efficiencyTable tr:even').css('background-color', '#CFCFCF');
   $('#hcahpsTable tr:odd').css('background-color', '#E3E3E3');
   $('#hcahpsTable tr:even').css('background-color', '#CFCFCF');
-
   $('.mainRow').css('background-color', '#B0B0B0');
   
 });

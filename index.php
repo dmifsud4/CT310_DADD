@@ -10,7 +10,7 @@
          Some stuff about value based purchasing and things Some stuff about value based purchasing and things
          Some stuff about value based purchasing and things Some stuff about value based purchasing and things
          Some stuff about value based purchasing and things Some stuff about value based purchasing and things</p>
-      
+
       <div id="formButtons">
       
         <h1 style="font-size:4vw;text-align:center;">What if Scenarios</h1>
@@ -114,6 +114,7 @@
          <td class="ayyyyyyy">1.068</td>
         </tr>
         <tr class="tRowOtherS">
+
          <th>Benchmark:</th>
          <td>0.709498</td>
          <td>0</td>
@@ -168,7 +169,6 @@
          <td>6/10</td>
          <td>0/10</td>
         </tr>
-
       </table>
 
       <br>
@@ -353,7 +353,6 @@
           <td>91.63</td>
           <td>84.58</td>
         </tr>
-
         <tr class="tRowOtherH">
           <th>Threshold:</th>
           <td>78.52</td>
@@ -411,7 +410,6 @@
         </tr>
 
       </table>
-      
       <?php echo Form::close(); ?>
 
     </div>

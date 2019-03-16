@@ -362,6 +362,7 @@ class Controller_M2 extends Controller_Template {
         $this->template->title = '';
 	}
 	
+
 	public function get_add() {
 	
 	}
