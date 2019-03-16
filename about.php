@@ -68,7 +68,7 @@
     </div>
     <div id="div2">
         <h3>Dominick Mifsud</h3>
-        <img src="/~dofe6096/ct310/m2/assets/img/dom.jpeg" alt="Dominick Mifsud">
+        <img src="/~dofe6096/ct310/m2/assets/img/dom.jpeg" alt="Domenick Mifsud">
     </div>
     <div id="div3">
         <h3>Andrew Rockwood</h3>

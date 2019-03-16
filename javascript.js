@@ -1,9 +1,14 @@
+
+function fade_in(one, two, three) {
+    one.fadeIn("slow");
+    setTimeout(function(){ two.fadeIn("slow"); }, 500);
+    setTimeout(function(){ three.fadeIn("slow"); }, 1000);
+}
+
 $(document).ready(function(){
 
   //Intro fade in:
-  $("header").fadeIn("slow");
-  setTimeout(function(){$("#main").fadeIn("slow");}, 500);
-  setTimeout(function(){$("footer").fadeIn("slow");}, 1000);
+  fade_in($("header"), $("#main"), $("footer"));
 
   //Top nav bar highlighting:
   $('#top a').hover(function(){

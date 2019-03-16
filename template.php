@@ -1,3 +1,6 @@
+<!-- Insert Home Path Here!!! -->
+<?php define('HOMEDIR', '~dofe6096/ct310/m2/');?>
+
 <!DOCTYPE html>
 
 <html lang='en'>
@@ -10,6 +13,7 @@
 	<meta name = "viewport" content = "width = device-width, initial-scale = 1">
     <?php echo Asset::css('site.css'); ?>
     <?php echo Asset::js('jquery.js'); ?>
+    <?php echo Asset::js('calculations.js')?>
     <?php echo Asset::js('javascript.js'); ?>
 
 <script
@@ -33,9 +37,9 @@
 
         <ul>
 
-          <li id="li1"><a id="a1" href='/~dofe6096/ct310/m2/'>Home</a><a id="a2" href='/~dofe6096/ct310/m2/index/m2/about.php'>About</a></li>
+          <li id="li1"><a id="a1" <?php echo 'href=\'/'.HOMEDIR.'\''?>>Home</a><a id="a2" <?php echo 'href=\'/'.HOMEDIR.'\'index/m2/about.php'?>>About</a></li>
           <!-- <li id="li2"><a id="a2" href='/~dofe6096/ct310/index.php/m2/about.php'>About</a></li> -->
-          <li id="li2"><a id="a3" href='/~dofe6096/ct310/m2/index/m2/more_information.php'>More&nbsp;Information</a></li>
+          <li id="li2"><a id="a3" <?php echo 'href=\'/'.HOMEDIR.'index/m2/more_information.php\''?>>More&nbsp;Information</a></li>
 
         </ul>
 
