@@ -9,7 +9,7 @@
 
     <section class="aboutPerson">
         <h1 class="aboutName">Biography</h1>
-        <p class="aboutText"> Domenick is a third year studying Computer Science with a 
+        <p class="aboutText">I'm Domenick Mifsud a third year student studying Computer Science with a 
         concentration in Human Centered Computing. I currently work as a volunteer research assistant 
         in the Natrual User Interaction lab here at CSU. My main interest is augmented reality./p>
     </section>
@@ -60,11 +60,9 @@
     <div id="containerA">
     
     <div id="div1">
-        <p>My name is Dorian Ferrer and I am an undergraduate student pursuing a Bachelor's
-            degree in Computer Science, with a concentration in Human Centered Computing, at
-            Colorado State University.  I graduated from Denver South High School in the Spring
-            of 2016.  Currently, I work as a Teaching Assistant for CS 163 here at Colorado
-            State University.</p>
+        <p>I'm Domenick Mifsud a third year student studying Computer Science with a 
+        concentration in Human Centered Computing. I currently work as a volunteer research assistant 
+        in the Natrual User Interaction lab here at CSU. My main interest is augmented reality.</p>
     </div>
     <div id="div2">
         <h3>Dominick Mifsud</h3>
