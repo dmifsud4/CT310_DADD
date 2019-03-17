@@ -2,13 +2,20 @@
  Load Button Stuff:
  */
 
-var DIR = '/~dmifsud/';
+var DIR = '/~dofe6096/';
 
-function load_choosefile(str) {
+function open_comments() {
+    $('#commentBox').show();/*
+    setTimeout(function() { $('#filenameinput').val($('#dropDown').val()); }, 250);*/
+}
+
+function load_choosefile(/*str*/) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("filler").innerHTML = str + this.responseText + "</select>";
+//             document.getElementById("filler").innerHTML = str + this.responseText + "</select>";
+//             $('#filler').html(str + this.responseText + "</select>");
+            $('#filler').html(this.responseText);
         }
     };
     xmlhttp.open("GET", DIR + "ct310/m2/XMLSaves/script.php", true);
@@ -16,8 +23,13 @@ function load_choosefile(str) {
 }
 
 function load_sequence() {
-    var str = "<button id='loadButton' name='load' onclick='load_xml()'>Load File</button><select id='dropDown'>";
-    load_choosefile(str);
+    $('#theFormAy').show();
+//     var str = "<button id='loadButton' name='load' onclick='load_xml(); open_comments();'>Load File</button><select id='dropDown' name='dropDown'>";
+//     $('#filler').html("<button id='loadButton' name='load' onclick='load_xml(); open_comments();'>Load File</button>");
+//     $('#dropDown').show();
+    load_choosefile(/*str*/); 
+/*    var filename = $('#dropDown').val();
+    console.log(filename);*/
 }
 
 function load_xml(filename) {
@@ -68,8 +80,6 @@ function load_safety(xmlDoc, tableType) {
  What If Button Stuff:
  */
 
-
-//TODO:
 function whatif_calculate() {
     $('#submitButton').hide();
     $("#save_button").css('display', 'inline');
@@ -207,9 +217,16 @@ function whatif_calculate() {
 			 imp = 0
     	 } else {
 		 	 imp = ( 10 * ((parseFloat(document.getElementById("row9").getElementsByClassName("form-control")[i].value) - parseFloat(document.getElementById("row8").getElementsByClassName("form-control")[i].value)) / (parseFloat(document.getElementsByClassName("tRowOtherH")[2].getElementsByTagName("td")[i].innerHTML) - parseFloat(document.getElementById("row8").getElementsByClassName("form-control")[i].value)))) - 0.5    
+		 	 
+		 	 console.log("1: " + document.getElementById("row9").getElementsByClassName("form-control")[i].innerHTML);
+		 	 console.log("2: " + document.getElementById("row8").getElementsByClassName("form-control")[i].innerHTML);
+		 	 console.log("3: " + document.getElementsByClassName("tRowOtherH")[2].getElementsByTagName("td")[i].innerHTML);
+             console.log("4: " + document.getElementById("row8").getElementsByClassName("form-control")[i].innerHTML);
     	 }
     	 document.getElementsByClassName("tRowOtherH")[5].getElementsByTagName("td")[i].innerHTML = Math.round(a) + "/10";
     	 document.getElementsByClassName("tRowOtherH")[6].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/9";
+         console.log("a: " + a);
+         console.log("imp: " + imp);
     	 if (a < imp) {
     	 	 document.getElementsByClassName("tRowOtherH")[7].getElementsByTagName("td")[i].innerHTML = Math.round(imp) + "/10";
     	 	 hca += Math.round(imp);
@@ -253,14 +270,16 @@ function whatif_calculate() {
  	 }
  	 var HDS = ((20 * minFinal) - 0.5) + hca;
  	 dom_scores.push(HDS * .25);
- 	 console.log(dom_scores);
  	 for (var c = 0; c < 4; c++) {
 	 	  	 tps += dom_scores[c];
  	 }
  	 var twopercent = parseFloat(document.getElementById('baseBox').value) * 0.02;
- 	 var after_sub = parseFloat(document.getElementById('baseBox').value) - twopercent;
- 	 var amr = after_sub + (twopercent * (tps / 100));
- 	 document.getElementById("VBP").getElementsByClassName("tRowOtherV")[1].getElementsByTagName("td")[0].innerHTML = "$" + (twopercent * (tps / 100));
+     var after_sub = parseFloat(document.getElementById('baseBox').value) - twopercent;
+ 	 var emr = parseFloat(document.getElementById('baseBox').value);
+     console.log("emr: " + emr);
+     var amr = after_sub + (twopercent * (tps / 100));
+ 	 document.getElementsByClassName("tRowOtherV")[1].getElementsByTagName("td")[0].innerHTML = "$" + (twopercent * (tps / 100)).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+     document.getElementsByClassName("tRowOtherV")[2].getElementsByTagName("td")[0].innerHTML = "$" + amr.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function whatif_sequence() {

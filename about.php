@@ -1,5 +1,7 @@
 <div id="aboutPage">
 
+<?php define('HOMEDIRA', '/~dofe6096/ct310/m2/');?>
+
 <!--    <div class="imgPerson">
         <h1 class="aboutName">Dominick Mifsud</h1>
         <img src="/~dofe6096/ct310/images/dom.jpeg" alt="Dominick Mifsud" class="aboutImg">
@@ -68,11 +70,11 @@
     </div>
     <div id="div2">
         <h3>Dominick Mifsud</h3>
-        <img src="/~dofe6096/ct310/m2/assets/img/dom.jpeg" alt="Domenick Mifsud">
+        <img src="<?php echo HOMEDIRA.'assets/img/dom.jpeg'?>" alt="Domenick Mifsud">
     </div>
     <div id="div3">
         <h3>Andrew Rockwood</h3>
-        <img src="/~dofe6096/ct310/m2/assets/img/and.jpg" alt="Andrew Rockwood">
+        <img src="<?php echo HOMEDIRA.'assets/img/and.jpg'?>" alt="Andrew Rockwood">
     </div>
     <div id="div4">
         <p>Andrew is a senior at Colorado State University studying Applied Computing Technology. The area he is most interested in
@@ -85,11 +87,11 @@
     </div>
     <div id="div6">
         <h3>David Sant</h3>
-        <img src="/~dofe6096/ct310/m2/assets/img/dav.jpg" alt="David Sant">
+        <img src="<?php echo HOMEDIRA.'assets/img/dav.jpg'?>" alt="David Sant">
     </div>
     <div id="div7">
         <h3>Dorian Ferrer</h3>
-        <img src="/~dofe6096/ct310/m2/assets/img/profile.jpg" alt="Dorian Ferrer">
+        <img src="<?php echo HOMEDIRA.'assets/img/profile.jpg'?>" alt="Dorian Ferrer">
     </div>
     <div id="div8">
         <p>My name is Dorian Ferrer and I am an undergraduate student pursuing a Bachelor's

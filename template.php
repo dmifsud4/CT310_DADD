@@ -1,4 +1,4 @@
-<!-- Insert Home Path Here!!! -->
+<!-- TODO: Insert Home Path Here!!! -->
 <?php define('HOMEDIR', '~dofe6096/ct310/m2/');?>
 
 <!DOCTYPE html>
@@ -16,11 +16,6 @@
     <?php echo Asset::js('calculations.js')?>
     <?php echo Asset::js('javascript.js'); ?>
 
-<script
-  src="http://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -37,7 +32,7 @@
 
         <ul>
 
-          <li id="li1"><a id="a1" <?php echo 'href=\'/'.HOMEDIR.'\''?>>Home</a><a id="a2" <?php echo 'href=\'/'.HOMEDIR.'\'index/m2/about.php'?>>About</a></li>
+          <li id="li1"><a id="a1" <?php echo 'href=\'/'.HOMEDIR.'\''?>>Home</a><a id="a2" <?php echo 'href=\'/'.HOMEDIR.'index/m2/about.php\''?>>About</a></li>
           <!-- <li id="li2"><a id="a2" href='/~dofe6096/ct310/index.php/m2/about.php'>About</a></li> -->
           <li id="li2"><a id="a3" <?php echo 'href=\'/'.HOMEDIR.'index/m2/more_information.php\''?>>More&nbsp;Information</a></li>
 
@@ -59,7 +54,7 @@
   <footer class="footer">
   <!--     <p>&copy; Copyright ?php echo date('Y');?>, DADD Enterprises</p> -->
       <p style="margin-top:0px;">Copyright &copy; 2019, DADD Enterprises</p>
-      <p>This site was built using the <a href='https://fuelphp.com/' target='_blank'>FuelPHP framework</a></p>
+      <p>This site was built using the <a href='https://fuelphp.com/' target='_blank'>FuelPHP framework</a>, Part of a <a href="https://www.cs.colostate.edu/~ct310/yr2019sp/" target="_blank">CT310</a> course project</p>
   </footer>
 
 </body>

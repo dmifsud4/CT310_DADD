@@ -1,5 +1,7 @@
 <div id="indexPage">
 
+<?php $selectedVal = "";?>
+
       <h3>Fiscal Reimbursement Report for <strong style="color:#FFF;font-style:italic;">
         Kaiser Foundation Hospital-Santa Clara</strong></h3>
       <h3>Fiscal Year: <strong style="color:#FFF;font-style:italic;">11/07/2017</strong></h3>
@@ -10,6 +12,21 @@
          Some stuff about value based purchasing and things Some stuff about value based purchasing and things
          Some stuff about value based purchasing and things Some stuff about value based purchasing and things
          Some stuff about value based purchasing and things Some stuff about value based purchasing and things</p>
+      
+      <div id="commentBox">
+      
+        <?php
+            echo Form::open(array('action' => 'index/m2/saveComment', 'method' => 'post'));
+            echo Form::input('filenameinput', 're-enter filename');
+            echo Form::textarea('commentMessage', 'enter comment here', array('rows' => 6, 'cols' => 20));
+            if (isset($_POST['dropDown'])) {
+                $selectedVal = $_POST['dropDown'];
+            }
+            echo Form::button('COMMENT', 'Save Comment', array('id' => 'commentButton'));
+            echo Form::close();
+        ?>
+    
+    </div>
       
       <div id="formButtons">
       
@@ -25,21 +42,35 @@
             <button id="loadButton" name='load' onclick='load_sequence()'>Load</button>
             <button id="whatIfButton" name='whatIf' onclick='whatif_sequence()'>What If</button>
             <button id="submitButton" name='submitButton' onclick='whatif_calculate()'>Calculate VBP</button>
+<!--             <select id='dropDown' name='dropDown' value='default.xml'></select> -->
+
+            <?php echo Form::open(array('action' => 'index/m2/fileName', 'class' => 'theFormAy', 'method' => 'post')); 
+                  $fileDir = DOCROOT.'XMLSaves/';
+                  echo "<button class='theFormAy' type='submit' id='loadButton' name='load' onclick='load_xml(); open_comments();'>Load File</button><select class='theFormAy' id='dropDown1' name='dropDown'>";
+                  foreach (glob($fileDir.'*.xml') as $filename) {
+                      echo '<option class="theFormAy" value="'.$filename.'">'.substr($filename, 54).'<br>';
+                  }
+                  echo "</select>";
+                  echo Form::close();
+            ?>
+
             <?php echo Form::open(array('action' => 'index/m2/saveData', 'method' => 'post'));
                   echo Form::button('savebutton', 'Save Presets', array('class' => 'btn btn-default', 'id' => 'save_button'));?>
             <div id="whatIfContainer">
                 <p>Enter Filename:</p>
-                <?php echo Form::input('fileName', '', array('id' => 'inputFile'));?>
+                <?php echo Form::input('fileName', 'file.xml');
+                ?>
                 <!--<input name='fileName' class='form-control' id='inputFile'>-->
             </div>
         </div>
         
       </div>
+      
 <!--       ?php echo Form::open(array('action' => 'index/m2/saveData', 'method' => 'post')); ?> -->
       <table id="VBP">
         <tr class="tRowOtherV" id='row1'>
-          <th>Expected Medicare Reimbursement:</th>
-          <td class='form-control'><input name='baseR' id='baseBox' value='2431370.59'></td>
+          <th>Base Medicare Reimbursement:</th>
+          <td class='form-control1'><input name='baseR' id='baseBox' value='2431370.59'></td>
           <td style="color:#FFF" class="ayyyyyyy">$2,431,370.59</td>
         </tr>
         <tr class="tRowOtherV">
@@ -51,13 +82,6 @@
           <td style="color:#FFFFFF">$2,456,101.10</td>
         </tr>
       </table>
-
-<!--      <p>Some stuff about value based purchasing and things Some stuff about value based purchasing and things
-         Some stuff about value based purchasing and things Some stuff about value based purchasing and things
-         Some stuff about value based purchasing and things Some stuff about value based purchasing and things
-         Some stuff about value based purchasing and things Some stuff about value based purchasing and things
-         Some stuff about value based purchasing and things Some stuff about value based purchasing and things
-         Some stuff about value based purchasing and things Some stuff about value based purchasing and things</p>-->
       
       <table class="mainTables" id="safetyTable">
 
@@ -77,14 +101,14 @@
         </tr>
         <tr class="tRowOtherS" id='row2'>
          <th>Baseline:</th>
-         <td class='form-control'><?php echo Form::input('PSI-90B', '0.964349', array('class' => 'form-control', 'id' => 'PSI-90B'));?></td>
-         <td class='form-control'><?php echo Form::input('PC-01B', '0', array('class' => 'form-control', 'id' => 'PC-01B'));?></td>
-         <td class='form-control'><?php echo Form::input('CLABSIB', '0.155', array('class' => 'form-control', 'id' => 'CLABSIB'));?></th>
-         <td class='form-control'><?php echo Form::input('CAUTIB', '1.518', array('class' => 'form-control', 'id' => 'CAUTIB'));?></th>
-         <td class='form-control'><?php echo Form::input('HAI-3B', '0.487', array('class' => 'form-control', 'id' => 'HAI-3B'));?></th>
-         <td class='form-control'><?php echo Form::input('HAI-4B', '2.191', array('class' => 'form-control', 'id' => 'HAI-4B'));?></th>
-         <td class='form-control'><?php echo Form::input('MRSAB', '0.873', array('class' => 'form-control', 'id' => 'MRSAB'));?></th>
-         <td class='form-control'><?php echo Form::input('CDIB', '0.715', array('class' => 'form-control', 'id' => 'CDIB'));?></th>
+         <td class='form-control1'><?php echo Form::input('PSI-90B', '0.964349', array('class' => 'form-control', 'id' => 'PSI-90B'));?></td>
+         <td class='form-control1'><?php echo Form::input('PC-01B', '0', array('class' => 'form-control', 'id' => 'PC-01B'));?></td>
+         <td class='form-control1'><?php echo Form::input('CLABSIB', '0.155', array('class' => 'form-control', 'id' => 'CLABSIB'));?></th>
+         <td class='form-control1'><?php echo Form::input('CAUTIB', '1.518', array('class' => 'form-control', 'id' => 'CAUTIB'));?></th>
+         <td class='form-control1'><?php echo Form::input('HAI-3B', '0.487', array('class' => 'form-control', 'id' => 'HAI-3B'));?></th>
+         <td class='form-control1'><?php echo Form::input('HAI-4B', '2.191', array('class' => 'form-control', 'id' => 'HAI-4B'));?></th>
+         <td class='form-control1'><?php echo Form::input('MRSAB', '0.873', array('class' => 'form-control', 'id' => 'MRSAB'));?></th>
+         <td class='form-control1'><?php echo Form::input('CDIB', '0.715', array('class' => 'form-control', 'id' => 'CDIB'));?></th>
          <td class="ayyyyyyy">0.964349</td>
          <td class="ayyyyyyy">0</td>
          <td class="ayyyyyyy">0.155</td>
@@ -96,14 +120,14 @@
         </tr>
         <tr class="tRowOtherS" id='row3'>
          <th>Performance:</th>
-         <td class='form-control'><?php echo Form::input('PSI-90P', '0.603915', array('class' => 'form-control', 'id' => 'PSI-90P'))?></td>
-         <td class='form-control'><?php echo Form::input('PC-01P', '0.004292', array('class' => 'form-control', 'id' => 'PC-01P'))?></td>
-         <td class='form-control'><?php echo Form::input('CLABSIP', '0.225', array('class' => 'form-control', 'id' => 'CLABSIP'))?></th>
-         <td class='form-control'><?php echo Form::input('CAUTIP', '1.356', array('class' => 'form-control', 'id' => 'CAUTIP'))?></th>
-         <td class='form-control'><?php echo Form::input('HAI-3P', '1.192', array('class' => 'form-control', 'id' => 'HAI-3P'))?></th>
-         <td class='form-control'><?php echo Form::input('HAI-4P', '0.755', array('class' => 'form-control', 'id' => 'HAI-4P'))?></th>
-         <td class='form-control'><?php echo Form::input('MRSAP', '0.28', array('class' => 'form-control', 'id' => 'MRSAP'))?></th>
-         <td class='form-control'><?php echo Form::input('CDIP', '1.068', array('class' => 'form-control', 'id' => 'CDIP'))?></th>
+         <td class='form-control1'><?php echo Form::input('PSI-90P', '0.603915', array('class' => 'form-control', 'id' => 'PSI-90P'))?></td>
+         <td class='form-control1'><?php echo Form::input('PC-01P', '0.004292', array('class' => 'form-control', 'id' => 'PC-01P'))?></td>
+         <td class='form-control1'><?php echo Form::input('CLABSIP', '0.225', array('class' => 'form-control', 'id' => 'CLABSIP'))?></th>
+         <td class='form-control1'><?php echo Form::input('CAUTIP', '1.356', array('class' => 'form-control', 'id' => 'CAUTIP'))?></th>
+         <td class='form-control1'><?php echo Form::input('HAI-3P', '1.192', array('class' => 'form-control', 'id' => 'HAI-3P'))?></th>
+         <td class='form-control1'><?php echo Form::input('HAI-4P', '0.755', array('class' => 'form-control', 'id' => 'HAI-4P'))?></th>
+         <td class='form-control1'><?php echo Form::input('MRSAP', '0.28', array('class' => 'form-control', 'id' => 'MRSAP'))?></th>
+         <td class='form-control1'><?php echo Form::input('CDIP', '1.068', array('class' => 'form-control', 'id' => 'CDIP'))?></th>
          <td class="ayyyyyyy">0.603915</td>
          <td class="ayyyyyyy">0.004292</td>
          <td class="ayyyyyyy">0.225</td>
@@ -188,18 +212,18 @@
         </tr>
         <tr class="tRowOtherC" id="row4">
           <th>Baseline:</th>
-          <td class='form-control'><?php echo Form::input('MORT-30-AMIB', '0.845546', array('class' => 'form-control', 'id' => 'MORT-30-AMIB'))?></th>
-          <td class='form-control'><?php echo Form::input('MORT-30-HFB', '0.877329', array('class' => 'form-control', 'id' => 'MORT-30-HFB'))?></th>
-          <td class='form-control'><?php echo Form::input('MORT-30-PNB', '0.881174', array('class' => 'form-control', 'id' => 'MORT-30-PNB'))?></th>
+          <td class='form-control1'><?php echo Form::input('MORT-30-AMIB', '0.845546', array('class' => 'form-control', 'id' => 'MORT-30-AMIB'))?></th>
+          <td class='form-control1'><?php echo Form::input('MORT-30-HFB', '0.877329', array('class' => 'form-control', 'id' => 'MORT-30-HFB'))?></th>
+          <td class='form-control1'><?php echo Form::input('MORT-30-PNB', '0.881174', array('class' => 'form-control', 'id' => 'MORT-30-PNB'))?></th>
           <td class="ayyyyyyy">0.845546</td>
           <td class="ayyyyyyy">0.877329</td>
           <td class="ayyyyyyy">0.881174</td>
         </tr>
         <tr class="tRowOtherC" id="row5">
           <th>Performance:</th>
-          <td class='form-control'><?php echo Form::input('MORT-30-AMIP', '0.869339', array('class' => 'form-control', 'id' => 'MORT-30-AMIP'))?></th>
-          <td class='form-control'><?php echo Form::input('MORT-30-HFP', '0.878083', array('class' => 'form-control', 'id' => 'MORT-30-HFP'))?></th>
-          <td class='form-control'><?php echo Form::input('MORT-30-PNP', '0.88325', array('class' => 'form-control', 'id' => 'MORT-30-PNP'))?></th>
+          <td class='form-control1'><?php echo Form::input('MORT-30-AMIP', '0.869339', array('class' => 'form-control', 'id' => 'MORT-30-AMIP'))?></th>
+          <td class='form-control1'><?php echo Form::input('MORT-30-HFP', '0.878083', array('class' => 'form-control', 'id' => 'MORT-30-HFP'))?></th>
+          <td class='form-control1'><?php echo Form::input('MORT-30-PNP', '0.88325', array('class' => 'form-control', 'id' => 'MORT-30-PNP'))?></th>
           <td class="ayyyyyyy">0.869339</td>
           <td class="ayyyyyyy">0.878083</td>
           <td class="ayyyyyyy">0.88325</td>
@@ -250,12 +274,12 @@
         </tr>
         <tr class="tRowOtherE" id='row6'>
           <th>Baseline:</th>
-          <td class='form-control'><?php echo Form::input('MSPB-1B', '0.818509', array('class' => 'form-control', 'id' => 'MSPB-1B'))?></th>
+          <td class='form-control1'><?php echo Form::input('MSPB-1B', '0.818509', array('class' => 'form-control', 'id' => 'MSPB-1B'))?></th>
           <td class="ayyyyyyy">0.818509</td>
         </tr>
         <tr class="tRowOtherE" id='row7'>
           <th>Performance:</th>
-          <td class='form-control'><?php echo Form::input('MSPB-1P', '0.855982', array('class' => 'form-control', 'id' => 'MSPB-1P'))?></th>
+          <td class='form-control1'><?php echo Form::input('MSPB-1P', '0.855982', array('class' => 'form-control', 'id' => 'MSPB-1P'))?></th>
           <td class="ayyyyyyy">0.855982</td>
         </tr>
         <tr class="tRowOtherE">
@@ -306,14 +330,14 @@
         </tr>
         <tr class="tRowOtherH" id='row8'>
           <th>Baseline:</th>
-          <td class='form-control'><?php echo Form::input('CWNB', '79.24', array('class' => 'form-control', 'id' => 'CWNB'))?></td>
-          <td class='form-control'><?php echo Form::input('CWDB', '82.62', array('class' => 'form-control', 'id' => 'CWDB'))?></td>
-          <td class='form-control'><?php echo Form::input('HSRB', '65.19', array('class' => 'form-control', 'id' => 'HSRB'))?></th>
-          <td class='form-control'><?php echo Form::input('CTB', '56.13', array('class' => 'form-control', 'id' => 'CTB'))?></th>
-          <td class='form-control'><?php echo Form::input('MCB', '63.51', array('class' => 'form-control', 'id' => 'MCB'))?></th>
-          <td class='form-control'><?php echo Form::input('CQB', '63.71', array('class' => 'form-control', 'id' => 'CQB'))?></th>
-          <td class='form-control'><?php echo Form::input('DIB', '88.2', array('class' => 'form-control', 'id' => 'DIB'))?></th>
-          <td class='form-control'><?php echo Form::input('OHRB', '78.71', array('class' => 'form-control', 'id' => 'OHRB'))?></th>
+          <td class='form-control1'><?php echo Form::input('CWNB', '79.24', array('class' => 'form-control', 'id' => 'CWNB'))?></td>
+          <td class='form-control1'><?php echo Form::input('CWDB', '82.62', array('class' => 'form-control', 'id' => 'CWDB'))?></td>
+          <td class='form-control1'><?php echo Form::input('HSRB', '65.19', array('class' => 'form-control', 'id' => 'HSRB'))?></th>
+          <td class='form-control1'><?php echo Form::input('CTB', '56.13', array('class' => 'form-control', 'id' => 'CTB'))?></th>
+          <td class='form-control1'><?php echo Form::input('MCB', '63.51', array('class' => 'form-control', 'id' => 'MCB'))?></th>
+          <td class='form-control1'><?php echo Form::input('CQB', '63.71', array('class' => 'form-control', 'id' => 'CQB'))?></th>
+          <td class='form-control1'><?php echo Form::input('DIB', '88.2', array('class' => 'form-control', 'id' => 'DIB'))?></th>
+          <td class='form-control1'><?php echo Form::input('OHRB', '78.71', array('class' => 'form-control', 'id' => 'OHRB'))?></th>
           <td class="ayyyyyyy">79.24</td>
           <td class="ayyyyyyy">82.62</td>
           <td class="ayyyyyyy">65.19</td>
@@ -325,14 +349,14 @@
         </tr>
         <tr class="tRowOtherH" id='row9'>
           <th>Performance:</th>
-          <td class='form-control'><?php echo Form::input('CWNP', '78.08', array('class' => 'form-control', 'id' => 'CWNP'))?></td>
-          <td class='form-control'><?php echo Form::input('CWDP', '83.26', array('class' => 'form-control', 'id' => 'CWDP'))?></td>
-          <td class='form-control'><?php echo Form::input('HSRP', '61.61', array('class' => 'form-control', 'id' => 'HSRP'))?></th>
-          <td class='form-control'><?php echo Form::input('CTP', '51.84', array('class' => 'form-control', 'id' => 'CTP'))?></th>
-          <td class='form-control'><?php echo Form::input('MCP', '60.54', array('class' => 'form-control', 'id' => 'MCP'))?></th>
-          <td class='form-control'><?php echo Form::input('CQP', '62.84', array('class' => 'form-control', 'id' => 'CQP'))?></th>
-          <td class='form-control'><?php echo Form::input('DIP', '87.39', array('class' => 'form-control', 'id' => 'DIP'))?></th>
-          <td class='form-control'><?php echo Form::input('OHRP', '75.89', array('class' => 'form-control', 'id' => 'OHRP'))?></th>
+          <td class='form-control1'><?php echo Form::input('CWNP', '78.08', array('class' => 'form-control', 'id' => 'CWNP'))?></td>
+          <td class='form-control1'><?php echo Form::input('CWDP', '83.26', array('class' => 'form-control', 'id' => 'CWDP'))?></td>
+          <td class='form-control1'><?php echo Form::input('HSRP', '61.61', array('class' => 'form-control', 'id' => 'HSRP'))?></th>
+          <td class='form-control1'><?php echo Form::input('CTP', '51.84', array('class' => 'form-control', 'id' => 'CTP'))?></th>
+          <td class='form-control1'><?php echo Form::input('MCP', '60.54', array('class' => 'form-control', 'id' => 'MCP'))?></th>
+          <td class='form-control1'><?php echo Form::input('CQP', '62.84', array('class' => 'form-control', 'id' => 'CQP'))?></th>
+          <td class='form-control1'><?php echo Form::input('DIP', '87.39', array('class' => 'form-control', 'id' => 'DIP'))?></th>
+          <td class='form-control1'><?php echo Form::input('OHRP', '75.89', array('class' => 'form-control', 'id' => 'OHRP'))?></th>
           <td class="ayyyyyyy">78.08</td>
           <td class="ayyyyyyy">83.26</td>
           <td class="ayyyyyyy">61.61</td>

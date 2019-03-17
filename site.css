@@ -117,8 +117,19 @@ header {
 
 .form-control {
   width: 6vw;
+}
+.form-control1 {
   display: none;
 }
+
+#commentBox {
+    display: none;
+}
+
+#commentButton {
+    
+}
+
 #baseBox {
   width: 17vw;
 }
@@ -168,6 +179,21 @@ header {
 #filler form button {
   width: 50%;
   margin-right: 16px;
+}
+
+#commentBox {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 16px;
+  text-align: center;
+  border: hidden;
+  border-radius: 8px;
+  width: 75%;
+  background-color: rgba(55, 166, 251, 0.50);
+}
+
+.theFormAy {
+    display: none;
 }
 
 #loadButton {

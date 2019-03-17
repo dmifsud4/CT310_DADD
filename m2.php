@@ -32,6 +32,8 @@ class Controller_M2 extends Controller_Template {
 	
     public static function post_sendEmail() {
 	
+        $toEmail = 'dofe6096@rams.colostate.edu';
+	
         $fromEmail = Input::post('fromEmail');
         $message = Input::post('message');
 	
@@ -41,7 +43,7 @@ class Controller_M2 extends Controller_Template {
         
 //         $email->to('dofe6096@rams.colostate.edu', 'Dorian Ferrer');
         
-        $email->to(array('dofe6096@rams.colostate.edu' => 'Dorian Ferrer',
+        $email->to(array($toEmail => 'Dorian Ferrer',
                         'ct310@cs.colostate.edu' => 'CT 310'));
         
         $email->subject('DemoRequest_Team7_DADD');
@@ -69,8 +71,45 @@ class Controller_M2 extends Controller_Template {
         Main Form Stuff:
 	*/
 	
+	public function post_fileName() {
+        $_POST['dropDown'] = Input::post('dropDown');
+	}
+	
+	public function post_saveComment() {
+        $filename = DOCROOT."XMLSaves/";
+        $filename.= Input::post('filenameinput');
+        $theComment = Input::post('commentMessage');
+   
+        $xmlDoc = simplexml_load_file($filename);
+        
+        $xmlDoc->Comment->Category->level4 = $theComment;
+   
+//         $xmlDoc = new DOMDocument();
+//         $xmlDoc->load($filename);
+//         
+//         $elem = $xmlDoc->documentElement;
+//         
+//         $a = $xmlDoc->createElement('REPORT');
+//         $b = $xmlDoc->createElement('COMMENT');
+//         $c = $xmlDoc->createElement('CATEGORY');
+//         
+//         $elem = $xmlDoc->createElement('newComment', $theComment);
+//         $xmlDoc->$a->$b->$c->appendChild($xmlDoc->createTextNode($theComment));
+//         
+        $final = $xmlDoc->asXML();
+        
+        Report::save_data($filename, $final);
+        
+        Response::redirect('index/m2/');
+        
+	}
+	
     public function post_saveData(){
-        $filename = "/s/bach/m/under/dofe6096/local_html/ct310/m2/XMLSaves/".(Input::post('fileName'));
+        //TODO: Change gloabl vars
+        
+        $filename = DOCROOT."XMLSaves/";
+    
+        $filename.=(Input::post('fileName'));
         
         $input = array(
             "VBP" => array(
@@ -263,6 +302,28 @@ class Controller_M2 extends Controller_Template {
                     "DISCH" => Input::post('DIP'),
                     "OVER" => Input::post('OHRP')
                 ),
+//                 <tr class="tRowOtherH">
+//                 <th>Floor Values:</th>
+//                 <td>55.27</td>
+//                 <td>57.39</td>
+//                 <td>38.4</td>
+//                 <td>25.21</td>
+//                 <td>43.43</td>
+//                 <td>40.05</td>
+//                 <td>62.25</td>
+//                 <td>37.67</td>
+//                 </tr>
+                array (
+                    "ROW" => 'Floor Values:',
+                    "NURSE" => '55.27',
+                    "DOCT" => '57.39',
+                    "RESPO" => '38.4',
+                    "CARE" => '25.21',
+                    "MEDIC" => '43.43',
+                    "CLEAN" => '40.05',
+                    "DISCH" => '62.25',
+                    "OVER" => '37.67'
+                ),
                 array (
                     "ROW" => 'Benchmark:',
                     "NURSE" => '86.68',
@@ -318,32 +379,61 @@ class Controller_M2 extends Controller_Template {
                     "DISCH" => '2/10',
                     "OVER" => '4/10'
                 )
+            ),
+            "Comment" => array (
+                array (
+                    "level4" => "default comment"
+                )
             )
         );
         
         $doc = new DOMDocument();
         $doc->formatOutput = true;
         
-        $r = $doc->createElement("REPORT");
+        $r = $doc->createElement("Report");
         $doc->appendChild($r);
         
-        //TODO:
         foreach($input as $key1 => $table) {
-            $tab = $doc->createElement($key1);
             
-            foreach($table as $category) {
-                $cat = $doc->createElement("CATEGORY");
+                $tab = $doc->createElement($key1);
                 
-                foreach($category as $key2 => $item) {
-                    $it = $doc->createElement($key2);
-                    $it->appendChild($doc->createTextNode($category[$key2]));
-                    $cat->appendChild($it);
+                foreach($table as $category) {
+                    $cat = $doc->createElement("Category");
+                    
+                    foreach($category as $key2 => $item) {
+                        $it = $doc->createElement($key2);
+                        $it->appendChild($doc->createTextNode($category[$key2]));
+                        $cat->appendChild($it);
+                    }
+                    
+                    $tab->appendChild($cat);
                 }
                 
-                $tab->appendChild($cat);
-            }
+                $r->appendChild($tab);
             
-            $r->appendChild($tab);
+//             if ($key1 == "COMMENT") {
+//                 $tab = $doc->createElement($table);
+//                 $r->appendChild($tab);
+//             }
+//             else {
+//                 
+//                 $tab = $doc->createElement($key1);
+//                 
+//                 foreach($table as $category) {
+//                     $cat = $doc->createElement("CATEGORY");
+//                     
+//                     foreach($category as $key2 => $item) {
+//                         $it = $doc->createElement($key2);
+//                         $it->appendChild($doc->createTextNode($category[$key2]));
+//                         $cat->appendChild($it);
+//                     }
+//                     
+//                     $tab->appendChild($cat);
+//                 }
+//                 
+//                 $r->appendChild($tab);
+//             
+//             }
             
         }
         
@@ -353,39 +443,5 @@ class Controller_M2 extends Controller_Template {
 		
 		Response::redirect('index/m2/');
 	}
-	
-	public function action_list() {
-        $data = array();
-        
-        $data['people'][] = Form::get_people();
-        
-        $this->template->title = '';
-	}
-	
-	public function get_add() {
-	
-	}
-	
-	public function post_add() {
-	
-	}
-	
-	/*
-	
-	Insert form function here:
-	
-	public function get_add() {
-		$data = array();
-		$this->template->title = 'Form Page';
-		$this->template->subtitle = 'Form Example'; 
-		$this->template->content = View::forge('home/add', $data);
-		//~ return Response::forge(View::forge('home/add'));
-	}
-	
-	public function post_add() {
-		Response::redirect('index/home/list');
-	}
-	
-	*/
 
 }
