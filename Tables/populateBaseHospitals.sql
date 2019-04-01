@@ -2,6 +2,33 @@
 --These are comments. Any line that begins with two dashes is a comment line
 --  and is not processed as an SQL statement.
 
+
+DROP TABLE IF EXISTS scenarioCare;
+CREATE TABLE scenarioCare(
+   hospital_ID        INTEGER  NOT NULL PRIMARY KEY 
+  ,Thresh_MORT_30_AMI NUMERIC(8,6) NOT NULL
+  ,Bench_MORT_30_AMI  NUMERIC(8,6) NOT NULL
+  ,Base_MORT_30_AMI   VARCHAR(13) NOT NULL
+  ,Perf_MORT_30_AMI   VARCHAR(13) NOT NULL
+  ,Ach_MORT_30_AMI    VARCHAR(13) NOT NULL
+  ,Imp_MORT_30_AMI    VARCHAR(13) NOT NULL
+  ,Msr_MORT_30_AMI    VARCHAR(13) NOT NULL
+  ,Thresh_MORT_30_HF  NUMERIC(8,6) NOT NULL
+  ,Bench_MORT_30_HF   NUMERIC(8,6) NOT NULL
+  ,Base_MORT_30_HF    VARCHAR(13) NOT NULL
+  ,Perf_MORT_30_HF    VARCHAR(13) NOT NULL
+  ,Ach_MORT_30_HF     VARCHAR(13) NOT NULL
+  ,Imp_MORT_30_HF     VARCHAR(13) NOT NULL
+  ,Msr_MORT_30_HF     VARCHAR(13) NOT NULL
+  ,Thresh_MORT_30_PN  NUMERIC(7,5) NOT NULL
+  ,Bench_MORT_30_PN   NUMERIC(6,4) NOT NULL
+  ,Base_MORT_30_PN    VARCHAR(13) NOT NULL
+  ,Perf_MORT_30_PN    NUMERIC(8,6)
+  ,Ach_MORT_30_PN     VARCHAR(13) NOT NULL
+  ,Imp_MORT_30_PN     VARCHAR(13) NOT NULL
+  ,Msr_MORT_30_PN     VARCHAR(13) NOT NULL
+);
+
 DROP TABLE IF EXISTS baseCare;
 CREATE TABLE baseCare(
    hospital_ID        INTEGER  NOT NULL PRIMARY KEY 
@@ -2837,6 +2864,74 @@ INSERT INTO baseCare(hospital_ID,Thresh_MORT_30_AMI,Bench_MORT_30_AMI,Base_MORT_
 ,(670106,0.850916,0.873053,'Not Available','0.863534','Not Available','Not Available','Not Available',0.883421,0.907656,'Not Available','0.884113','Not Available','Not Available','Not Available',0.88286,0.9079,'Not Available',0.895677,'Not Available','Not Available','Not Available')
 ,(670108,0.850916,0.873053,'Not Available','0.866000','Not Available','Not Available','Not Available',0.883421,0.907656,'Not Available','0.886867','Not Available','Not Available','Not Available',0.88286,0.9079,'Not Available',0.896352,'5/10','Not Available','5/10');
 
+DROP TABLE IF EXISTS scenarioHCAHPS;
+CREATE TABLE scenarioHCAHPS(
+   hospital_ID              INTEGER  NOT NULL PRIMARY KEY 
+  ,Floor_Comm_Nurses        NUMERIC(5,2) NOT NULL
+  ,Thresh_Comm_Nurses       NUMERIC(5,2) NOT NULL
+  ,Bench_Comm_Nurses        NUMERIC(5,2) NOT NULL
+  ,Base_Comm_Nurses         NUMERIC(5,2)
+  ,Perf_Comm_Nurses         NUMERIC(5,2) NOT NULL
+  ,Ach_Comm_Nurses          VARCHAR(13) NOT NULL
+  ,Imp_Comm_Nurses          VARCHAR(13) NOT NULL
+  ,Msr_Comm_Nurses          VARCHAR(13) NOT NULL
+  ,Floor_Comm_Doctors       NUMERIC(5,2) NOT NULL
+  ,Thresh_Comm_Doctors      NUMERIC(5,2) NOT NULL
+  ,Bench_Comm_Doctors       NUMERIC(5,2) NOT NULL
+  ,Base_Comm_Doctors        NUMERIC(5,2)
+  ,Perf_Comm_Doctors        NUMERIC(5,2) NOT NULL
+  ,Ach_Comm_Doctors         VARCHAR(13) NOT NULL
+  ,Imp_Comm_Doctors         VARCHAR(13) NOT NULL
+  ,Msr_Comm_Doctors         VARCHAR(13) NOT NULL
+  ,Floor_Responsiveness     NUMERIC(4,1) NOT NULL
+  ,Thresh_Responsiveness    NUMERIC(5,2) NOT NULL
+  ,Bench_Responsiveness     NUMERIC(5,2) NOT NULL
+  ,Base_Responsiveness      NUMERIC(5,2)
+  ,Perf_Responsiveness      NUMERIC(5,2) NOT NULL
+  ,Ach_Responsiveness       VARCHAR(13) NOT NULL
+  ,Imp_Responsiveness       VARCHAR(13) NOT NULL
+  ,Msr_Responsiveness       VARCHAR(13) NOT NULL
+  ,Floor_Transition         NUMERIC(5,2) NOT NULL
+  ,Thresh_Transition        NUMERIC(5,2) NOT NULL
+  ,Bench_Transition         NUMERIC(5,2) NOT NULL
+  ,Base_Transition          NUMERIC(5,2)
+  ,Perf_Transition          NUMERIC(5,2) NOT NULL
+  ,Ach_Transition           VARCHAR(13) NOT NULL
+  ,Imp_Transition           VARCHAR(13) NOT NULL
+  ,Msr_Transition           VARCHAR(13) NOT NULL
+  ,Floor_Med_Communication  NUMERIC(5,2) NOT NULL
+  ,Thresh_Med_Communication NUMERIC(5,2) NOT NULL
+  ,Bench_Med_Communication  NUMERIC(5,2) NOT NULL
+  ,Base_Med_Communication   NUMERIC(5,2)
+  ,Perf_Med_Communication   NUMERIC(5,2) NOT NULL
+  ,Ach_Med_Communication    VARCHAR(13) NOT NULL
+  ,Imp_Med_Communication    VARCHAR(13) NOT NULL
+  ,Msr_Med_Communication    VARCHAR(13) NOT NULL
+  ,Floor_Cleanliness        NUMERIC(5,2) NOT NULL
+  ,Thresh_Cleanliness       NUMERIC(4,1) NOT NULL
+  ,Bench_Cleanliness        INTEGER  NOT NULL
+  ,Base_Cleanliness         NUMERIC(5,2)
+  ,Perf_Cleanliness         NUMERIC(5,2) NOT NULL
+  ,Ach_Cleanliness          VARCHAR(13) NOT NULL
+  ,Imp_Cleanliness          VARCHAR(13) NOT NULL
+  ,Msr_Cleanliness          VARCHAR(13) NOT NULL
+  ,Floor_Discharge          NUMERIC(5,2) NOT NULL
+  ,Thresh_Discharge         NUMERIC(4,1) NOT NULL
+  ,Bench_Discharge          NUMERIC(5,2) NOT NULL
+  ,Base_Discharge           NUMERIC(5,2)
+  ,Perf_Discharge           NUMERIC(5,2) NOT NULL
+  ,Ach_Discharge            VARCHAR(13) NOT NULL
+  ,Imp_Discharge            VARCHAR(13) NOT NULL
+  ,Msr_Discharge            VARCHAR(13) NOT NULL
+  ,Floor_Overall            NUMERIC(5,2) NOT NULL
+  ,Thresh_Overall           NUMERIC(5,2) NOT NULL
+  ,Bench_Overall            NUMERIC(5,2) NOT NULL
+  ,Base_Overall             NUMERIC(5,2)
+  ,Perf_Overall             NUMERIC(5,2) NOT NULL
+  ,Ach_Overall              VARCHAR(13) NOT NULL
+  ,Imp_Overall              VARCHAR(13) NOT NULL
+  ,Msr_Overall              VARCHAR(13) NOT NULL
+);
 
 DROP TABLE IF EXISTS baseHCAHPS;
 CREATE TABLE baseHCAHPS(
@@ -5717,6 +5812,12 @@ INSERT INTO baseHCAHPS(hospital_ID,Floor_Comm_Nurses,Thresh_Comm_Nurses,Bench_Co
 ,(230035,55.27,78.52,86.68,80.4,84.33,'7/10','6/9','7/10',57.39,80.44,88.51,81.91,83.08,'3/10','1/9','3/10',38.4,65.08,80.35,66.74,72.99,'5/10','4/9','5/10',25.21,51.45,62.44,54.09,59.98,'7/10','7/9','7/10',43.43,63.37,73.66,67.43,69.73,'6/10','3/9','6/10',40.05,65.6,79,72.34,71.3,'4/10','0/9','4/10',62.25,86.6,91.63,91.96,91.81,'10/10','0/9','10/10',37.67,70.23,84.58,76.29,79.29,'6/10','3/9','6/10');
 
 
+DROP TABLE IF EXISTS scenarioHospital;
+CREATE TABLE scenarioHospital(
+   id           INTEGER  NOT NULL PRIMARY KEY 
+  ,hospitalName VARCHAR(50) NOT NULL
+);
+
 DROP TABLE IF EXISTS baseHospital;
 CREATE TABLE baseHospital(
    id           INTEGER  NOT NULL PRIMARY KEY 
@@ -8532,9 +8633,19 @@ INSERT INTO baseHospital(id,hospitalName) VALUES
 ,(10078,'NORTHEAST ALABAMA REGIONAL MEDICAL CENTER')
 ,(160030,'MARY GREELEY MEDICAL CENTER');
 
+DROP TABLE IF EXISTS scenarioEfficiency;
+CREATE TABLE scenarioEfficiency(
+   hospital_ID   INTEGER  NOT NULL PRIMARY KEY 
+  ,Thresh_MSPB_1 NUMERIC(8,6) NOT NULL
+  ,Bench_MSPB_1  NUMERIC(8,6) NOT NULL
+  ,Base_MSPB_1   NUMERIC(8,6)
+  ,Perf_MSPB_1   NUMERIC(8,6) NOT NULL
+  ,Ach_MSPB_1    VARCHAR(13) NOT NULL
+  ,Imp_MSPB_1    VARCHAR(13) NOT NULL
+  ,Msr_MSPB_1    VARCHAR(13) NOT NULL
+);
 
-
-
+DROP TABLE IF EXISTS baseEfficiency;
 CREATE TABLE baseEfficiency(
    hospital_ID   INTEGER  NOT NULL PRIMARY KEY 
   ,Thresh_MSPB_1 NUMERIC(8,6) NOT NULL
