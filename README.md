@@ -18,3 +18,7 @@
 * saveWebFiles will save the changes made to the files to your local repository.
 * To use, you must set permissons first
   * chmod +x copyWebFiles saveWebFiles 
+  
+## Mysql Database ##
+* To use the script, just log into mysql (while in the directory that contains the 'populateBaseHospitals.sql') and run the command " . populateBaseHospitals.sql  "  
+
