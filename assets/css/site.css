@@ -1,0 +1,18 @@
+body {
+  background-color: rgba(101, 141, 27, 0.65);
+  font-family: Palatino, "Times New Roman", Times, serif;
+  margin: 0px;
+}
+
+header {
+  background-color: rgba(35, 97, 146, 0.65);
+}
+
+.table {
+  background-color: #D9E1E3;
+}
+
+.card {
+  background-color: #D9E1E3;
+
+}
