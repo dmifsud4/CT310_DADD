@@ -15,6 +15,9 @@ class Controller_M3 extends Controller_Template {
 		//$data = array();
 		//$this->template->title = 'Report';
 		//$this->template->subtitle = 'Report';
+		//$hospital = Model_Hospital::find(50071);
+		//$hospital->safety = Model_Safety::find(50071);
+		//$hospital->save();
 		$view = View::forge('m3/report');
 		//return
 		$this->template->content = Presenter::forge('report', 'view', null, $view);
