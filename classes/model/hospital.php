@@ -12,7 +12,7 @@ class Model_Hospital extends Orm\Model{
 		'county'
 		);
 
-	protected static $_has_one = array('safety','efficiency','care','hcahp');
+	protected static $_has_one = array('safety','efficiency','care','hcahp','calc');
 
 
 
