@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS safety (
     `hai2_ap` VARCHAR(13) CHARACTER SET utf8,
     `hai2_ip` VARCHAR(13) CHARACTER SET utf8,
     `hai2_ms` VARCHAR(13) CHARACTER SET utf8,
-    `Combined_SSI_Measure_Score` VARCHAR(13) CHARACTER SET utf8,
+    `Combined_SSI_Msr` VARCHAR(13) CHARACTER SET utf8,
     `hai3_br` VARCHAR(13) CHARACTER SET utf8,
     `hai3_pr` VARCHAR(13) CHARACTER SET utf8,
     `hai3_ap` VARCHAR(13) CHARACTER SET utf8,
