@@ -48,7 +48,7 @@
     <?php echo $hospital['city'].", ".$hospital['state'].", ".$hospital['zip'] ?></p>
     <input class="form-control" id="myInput" type="text" placeholder="Search..">
     <?php
-    
+
 ?>
 
     <select name="cars" class="custom-select">
@@ -65,8 +65,8 @@
 
 <?php
 
-foreach ($domains as $dkey => $domain) {
-echo '<div class="row inner" id="'.$dkey.'1">
+foreach ($domains as $ddkey => $domain) {
+echo '<div class="row inner" id="'.$ddkey.'1">
   <div class="col">
     <div class="table-responsive-sm">
     <table class="table table-bordered table-striped table-hover text-center shadow">
@@ -83,7 +83,7 @@ echo '<div class="row inner" id="'.$dkey.'1">
           echo "<th>".$measure['name']."</th>";
           echo "<td>".$measure['at']."</td>";
           echo "<td>".$measure['be']."</td>";
-          $dkey = $domain['dkey'];
+          $dukey = $domain['dkey'];
           echo "<td>";
           echo Form::input('saftey', $hospital->$dkey[$mkey.'_br'], array('class' => 'form-control', 'id' => $mkey));
           echo "</td>";
