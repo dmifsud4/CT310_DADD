@@ -43,7 +43,14 @@
     <div class="card">
   <div class="card-body">
     <h4 class="card-title">Currently Selected Hospital</h4>
-    <p class="card-text">Some example text. Some example text.</p>
+    <p class="card-text"><?php echo $hospital['name'] ?><br>
+    <?php echo $hospital['addr'] ?> <br>
+    <?php echo $hospital['city'].", ".$hospital['state'].", ".$hospital['zip'] ?></p>
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <?php
+    
+?>
+
     <select name="cars" class="custom-select">
       <option selected>Select Another Hospital</option>
       <option value="volvo">Volvo</option>
@@ -73,15 +80,21 @@ echo '<div class="row inner" id="'.$dkey.'1">
         echo "</tr>";
         foreach ($domain['measures'] as $mkey => $measure) {
           echo "<tr>";
-          echo "<th>".$mkey."</th>";
-          foreach ($measure as $skey => $score) {
-            if ($skey == "ba" || $skey == "pe") {
-              echo "<td>";
-              echo Form::input('saftey', $score, array('class' => 'form-control', 'id' => $mkey.$skey));
-              echo "</td>";
-            } else
-            echo "<td>".$score."</td>";
-          }
+          echo "<th>".$measure['name']."</th>";
+          echo "<td>".$measure['at']."</td>";
+          echo "<td>".$measure['be']."</td>";
+          $dkey = $domain['dkey'];
+          echo "<td>";
+          echo Form::input('saftey', $hospital->$dkey[$mkey.'_br'], array('class' => 'form-control', 'id' => $mkey));
+          echo "</td>";
+          echo "<td>";
+          echo Form::input('saftey', $hospital->$dkey[$mkey.'_pr'], array('class' => 'form-control', 'id' => $mkey));
+          echo "</td>";
+          echo "<td>".$hospital->$dkey[$mkey.'_ap']."</td>";
+          echo "<td>".$hospital->$dkey[$mkey.'_ip']."</td>";
+          echo "<td>".$hospital->$dkey[$mkey.'_ms']."</td>";
+
+
           echo "</tr>";
         }
         echo '</table>
