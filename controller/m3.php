@@ -13,9 +13,9 @@ class Controller_M3 extends Controller_Template {
 	public function action_report()
 	 {
 
-		 if( ! Auth::check() ) {
-			Response::redirect('index/m3/sign_in');
-		} else {
+		 //if( ! Auth::check() ) {
+			//Response::redirect('index/m3/sign_in');
+		//} else {
 
 		$data = array();
 		$this->template->title = 'Report';
@@ -23,7 +23,7 @@ class Controller_M3 extends Controller_Template {
 		$data['hospital'] = Model_Hospital::find(50071);
 		$view = View::forge('m3/report', $data);
 		$this->template->content = Presenter::forge('report', 'view', null, $view);
-	}
+	//}
 
 	 }
 

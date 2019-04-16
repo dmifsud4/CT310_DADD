@@ -1,7 +1,3 @@
-<?php
-echo Form::open(array('action' => 'm3/report', 'method' => 'post'));
-?>
-
 <style>
         .scroll-box {
             overflow-y: scroll;
@@ -61,6 +57,9 @@ echo Form::open(array('action' => 'm3/report', 'method' => 'post'));
       Provider Number: <?php echo $hospital['id'] ?>
       </p>
       <div>Select another hospital below</div>
+      <?php
+      echo Form::open(array('action' => 'index/m3/report', 'method' => 'post'));
+      ?>
       <?php echo Form::input('form', '', array('class' => 'form-control input-sm', 'id' => 'myInput', 'placeholder' => 'Search...')); ?>
       <?php
       $columns = array('id', 'name');

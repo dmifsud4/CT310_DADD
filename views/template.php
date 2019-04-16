@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php $ROOT = "~dmifsud/ct310/m3/"; ?>
 <html lang="en">
   <head>
     <style>
@@ -31,25 +30,25 @@
 <div class="collapse navbar-collapse" id="collapsibleNavbar">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <?php echo Html::anchor('ct310/m3/index', 'Home', array('class'=>'nav-link')); ?>
+      <li><a class="nav-link" href=<?php echo Uri::create('index.php/m3/index'); ?>>Home</a></li>
     </li>
     <li class="nav-item">
-      <?php echo Html::anchor('ct310/m3/report', 'Report', array('class'=>'nav-link')); ?>
+      <li><a class="nav-link" href=<?php echo Uri::create('index.php/m3/report'); ?>>Report</a></li>
     </li>
     <li class="nav-item">
-      <?php echo Html::anchor('ct310/m3/about', 'About', array('class'=>'nav-link')); ?>
+      <li><a class="nav-link" href=<?php echo Uri::create('index.php/m3/about'); ?>>About</a></li>
     </li>
     <li class="nav-item">
-      <?php echo Html::anchor('ct310/m3/more_information', 'More Information', array('class'=>'nav-link')); ?>
+      <li><a class="nav-link" href=<?php echo Uri::create('index.php/m3/more_information'); ?>>More Information</a></li>
     </li>
   </ul>
 <ul class="navbar-nav ml-auto">
   <li class="nav-item-right">
     <?php
     if( ! Auth::check() ) {
-      echo '<a class="nav-link" href="/' . $ROOT. 'index/m3/sign_in" >Login</a>';
+      echo Html::anchor('sign_in', 'Login', array('class'=>'nav-link'));
     } else {
-      echo '<a class="nav-link" href="/' . $ROOT. 'index/m3/logout" >Logout</a>';
+      echo Html::anchor('logout', 'Logout', array('class'=>'nav-link'));
     }?>
   </ul>
 </div>

@@ -17449,3 +17449,60 @@ INSERT INTO safety VALUES
     (670103,'Not Available','0.627056','10 out of 10','Not Available','10 out of 10','Not Available','0','10 out of 10','Not Available','10 out of 10','Not Available','0','10 out of 10','Not Available','10 out of 10','0 out of 10','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','0.843','0 out of 10','Not Available','0 out of 10','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','0.834','0 out of 10','Not Available','0 out of 10','Not Available','0','10 out of 10','Not Available','10 out of 10'),
     (670106,'Not Available','0.628064','10 out of 10','Not Available','10 out of 10','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','1.133','0 out of 10','Not Available','0 out of 10','Not Available','0.045455','0 out of 10','Not Available','0 out of 10'),
     (670108,'Not Available','0.642876','10 out of 10','Not Available','10 out of 10','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','Not Available','0.606','3 out of 10','Not Available','3 out of 10','Not Available','0','10 out of 10','Not Available','10 out of 10');
+	
+	CREATE TABLE IF NOT EXISTS comments (
+	    `id` INT,
+	    `body` VARCHAR(255) CHARACTER SET utf8,
+	    `senario_id` INT
+	);
+	INSERT INTO comments VALUES
+	    (1,'testing this is a comment',1);
+		
+		CREATE TABLE IF NOT EXISTS senarios (
+		    `id` INT,
+		    `psi90_br` NUMERIC(7, 6),
+		    `psi90_pr` NUMERIC(7, 6),
+		    `hai1_br` NUMERIC(7, 6),
+		    `hai1_pr` NUMERIC(7, 6),
+		    `hai2_br` NUMERIC(7, 6),
+		    `hai2_pr` NUMERIC(7, 6),
+		    `hai3_br` NUMERIC(7, 6),
+		    `hai3_pr` NUMERIC(7, 6),
+		    `hai4_br` NUMERIC(7, 6),
+		    `hai4_pr` NUMERIC(7, 6),
+		    `hai5_br` NUMERIC(7, 6),
+		    `hai5_pr` NUMERIC(7, 6),
+		    `hai6_br` NUMERIC(7, 6),
+		    `hai6_pr` NUMERIC(7, 6),
+		    `pc01_br` NUMERIC(7, 6),
+		    `pc01_pr` NUMERIC(7, 6),
+		    `mort30ami_br` NUMERIC(7, 6),
+		    `mort30ami_pr` NUMERIC(7, 6),
+		    `mort30hf_br` NUMERIC(7, 6),
+		    `mort30hf_pr` NUMERIC(7, 6),
+		    `mort30pn_br` NUMERIC(7, 6),
+		    `mort30pn_pr` NUMERIC(7, 6),
+		    `mspb1_br` NUMERIC(7, 6),
+		    `mspb1_pr` NUMERIC(7, 6),
+		    `cwn_br` NUMERIC(7, 6),
+		    `cwn_pr` NUMERIC(7, 6),
+		    `cwd_br` NUMERIC(7, 6),
+		    `cwd_pr` NUMERIC(7, 6),
+		    `rhs_br` NUMERIC(7, 6),
+		    `rhs_pr` NUMERIC(7, 6),
+		    `ct_br` NUMERIC(7, 6),
+		    `ct_pr` NUMERIC(7, 6),
+		    `cm_br` NUMERIC(7, 6),
+		    `cm_pr` NUMERIC(7, 6),
+		    `cqhe_br` NUMERIC(7, 6),
+		    `cqhe_pr` NUMERIC(7, 6),
+		    `di_br` NUMERIC(7, 6),
+		    `di_pr` NUMERIC(7, 6),
+		    `or_br` NUMERIC(7, 6),
+		    `or_pr` NUMERIC(7, 6),
+			`hospital_id` INT,
+		    `user_id` INT
+		);
+		INSERT INTO senarios VALUES
+		    (1,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,0.850916,1,1);
+	
