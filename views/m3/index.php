@@ -10,7 +10,7 @@
 		<div class="wrapper col">
 		  <div id="formContent">
 		    <!-- Tabs Titles -->
-		
+
 		    <!-- Icon -->
 		    <div class="fadeIn first">
 		    	<br>
@@ -21,13 +21,13 @@
 		      	<button id="linky">Sign up here</button>
 		      </form>
 		    </div>
-		
+
 		  </div>
 		</div>
 		<div class="wrapper col">
 		  <div id="formContent">
 		    <!-- Tabs Titles -->
-		
+
 		    <!-- Icon -->
 		    <div class="fadeIn first">
 		    	<br>
@@ -38,8 +38,8 @@
 		      	<button id="linky" >Sign in here</button>
 		      </form>
 		    </div>
-		
+
 		  </div>
 		</div>
 	</div>
-</div>
+</div> 

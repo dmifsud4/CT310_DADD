@@ -1,0 +1,11 @@
+bmr - base medicare reimbursement
+emr - expected medicare reimbursement
+amr - adjusted medicare reimbursement
+tp - two percent
+as - after subtraction
+uds - unweighted domain score
+wds - weighted domain score
+tps - total performance score
+
+th - achievement threshold
+be -

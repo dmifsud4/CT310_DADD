@@ -5,10 +5,12 @@ class Presenter_Report extends Presenter
   public function view()
     {
 
-      $this->headers=array("Measures","Achievement Threshold","Benchmark","Baseline Rate","Performance Rate","Achievement Points", "Improvement Points","Measure Score");
-      
-      $option = Input::post('ID');
-      $this->hospital = Model_Hospital::find(50071, array('related' => array('safety','care','efficiency','hcahp')));
+      $this->headers=array("Achievement Threshold","Benchmark","Baseline Rate","Performance Rate","Achievement Points", "Improvement Points");
+
+
+      //$this->hospital = Model_Hospital::find(50071, array('related' => array('safety','care','efficiency','hcahp')));
+
+      $this->user = Model_User::find(1, array('related' => array('senarios' => array('related' => array('comments')))));
 
       $this->domains=array(
         "sa"=>array(
@@ -45,14 +47,14 @@ class Presenter_Report extends Presenter
                 "name"=>"HCAHPS",
                 "dkey"=>"hcahp",
                 "measures"=>array(
-                  "cwn"=>array("name"=>"Communication with Nurses","at"=>78.52,"be"=> 86.68),
-                  "cwd"=>array("name"=>"Communication with Doctors","at"=>80.44,"be"=> 88.51),
-                  "rohs"=>array("name"=>"Hospital Staff Responsiveness","at"=>65.08,"be"=> 80.35),
-                  "ct"=>array("name"=>"Care Transition","at"=>51.45,"be"=> 62.44),
-                  "cam"=>array("name"=>"Medicinal Communication","at"=>63.37,"be"=> 73.66),
-                  "caqohe"=>array("name"=>"Cleanliness and Quietness","at"=>65.6,"be"=> 79),
-                  "di"=>array("name"=>"Discharge Information","at"=>86.6,"be"=> 91.63),
-                  "oroh"=>array("name"=>"Overall Hospital Rating","at"=>70.23,"be"=> 84.58)
+                  "cwn"=>array("name"=>"Communication with Nurses","at"=>78.52,"be"=> 86.68,"fl"=>55.27),
+                  "cwd"=>array("name"=>"Communication with Doctors","at"=>80.44,"be"=> 88.51,"fl"=>57.39),
+                  "rohs"=>array("name"=>"Hospital Staff Responsiveness","at"=>65.08,"be"=> 80.35,"fl"=>38.4),
+                  "ct"=>array("name"=>"Care Transition","at"=>51.45,"be"=> 62.44,"fl"=>25.21),
+                  "cam"=>array("name"=>"Medicinal Communication","at"=>63.37,"be"=>73.66,"fl"=>43.43),
+                  "caqohe"=>array("name"=>"Cleanliness and Quietness","at"=>65.6,"be"=>79,"fl"=>40.05),
+                  "di"=>array("name"=>"Discharge Information","at"=>86.6,"be"=> 91.63,"fl"=>62.25),
+                  "oroh"=>array("name"=>"Overall Hospital Rating","at"=>70.23,"be"=>84.58,"fl"=>37.67)
                   )
                 )
       );
