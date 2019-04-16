@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<?php $ROOT = "~dmifsud/ct310/m3/"; ?>
 <html lang="en">
   <head>
+    <style>
+		@import url('https://fonts.googleapis.com/css?family=Poppins');
+	 </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,15 +13,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <?php echo Asset::css('site.css'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>Hello, world!</title>
+    <title><?php echo $title; ?></title>
   </head>
   <body>
 
     <header>
       <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>My First Bootstrap 4 Page</h1>
-    <p>Resize this responsive page to see the effect!</p>
-  </div>
+        <?php echo Asset::img('DADD.png', array('id'=> 'logo')); ?>
+  		</div>
     </header>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -28,17 +31,26 @@
 <div class="collapse navbar-collapse" id="collapsibleNavbar">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <?php echo Html::anchor('m3/index', 'Home', array('class'=>'nav-link')); ?>
+      <?php echo Html::anchor('ct310/m3/index', 'Home', array('class'=>'nav-link')); ?>
     </li>
     <li class="nav-item">
-      <?php echo Html::anchor('m3/report', 'Report', array('class'=>'nav-link')); ?>
+      <?php echo Html::anchor('ct310/m3/report', 'Report', array('class'=>'nav-link')); ?>
     </li>
     <li class="nav-item">
-      <?php echo Html::anchor('m3/about', 'About', array('class'=>'nav-link')); ?>
+      <?php echo Html::anchor('ct310/m3/about', 'About', array('class'=>'nav-link')); ?>
     </li>
     <li class="nav-item">
-      <?php echo Html::anchor('m3/more_information', 'More Information', array('class'=>'nav-link')); ?>
+      <?php echo Html::anchor('ct310/m3/more_information', 'More Information', array('class'=>'nav-link')); ?>
     </li>
+  </ul>
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item-right">
+    <?php
+    if( ! Auth::check() ) {
+      echo '<a class="nav-link" href="/' . $ROOT. 'index/m3/sign_in" >Login</a>';
+    } else {
+      echo '<a class="nav-link" href="/' . $ROOT. 'index/m3/logout" >Logout</a>';
+    }?>
   </ul>
 </div>
 </nav>
