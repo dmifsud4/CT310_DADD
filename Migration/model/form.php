@@ -57,6 +57,10 @@ class Form extends \Model {
                 $class = 'Migration_'.$id;
                 $class::down();
                 \DB::query('UPDATE migration SET status = 0 WHERE migration_id = '.$oldid.';')->execute();
+                if ($oldid == 1){
+						\DB::query('UPDATE migration SET status = 0 WHERE migration_id = 2;')->execute();
+						\DB::query('UPDATE migration SET status = 0 WHERE migration_id = 3;')->execute();
+                }
             }
             else {
                 die();
