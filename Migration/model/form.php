@@ -27,6 +27,9 @@ class Form extends \Model {
     }
     
     public static function run_migration($id, $status) {
+//         $stat = \DB::query('SELECT status FROM migration WHERE migration_id = '.$id.';')->execute()->as_array();
+        $stat = \DB::select('status')->from('migration')->where('migration_id', $id)->execute()[0]['status'];
+//         die("stat: ".$stat);
         $oldid = $id;
         if ($id < 10) {
             $id = '00'.$id;
@@ -38,7 +41,8 @@ class Form extends \Model {
             $id = ''.$id;
         }
         
-        if ($status == 0) {
+        if ($stat == 0) {
+//             die("whaaaaat");
             if ((include APPPATH.'migrations/'.$id.'_Migration.php') == true) {
                 $class = 'Migration_'.$id;
                 $class::up();
