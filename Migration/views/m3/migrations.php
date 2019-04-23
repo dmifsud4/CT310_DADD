@@ -23,8 +23,8 @@
 <header><h1>Migrations Dashboard</h1></header>
 
 <br><br>
-
-<table class="small table-striped table-bordered" id="migration_table">
+<div id="formContent">
+<table class="small table-striped table-bordered " id="migration_table">
 
 <?php
 
@@ -80,3 +80,17 @@
 ?>
 
 </table>
+</div>
+<br>
+<div class="small" id="dynamTable">
+<?php 
+	$stat = \DB::select('status')->from('migration')->where('migration_id', 1)->execute()[0]['status'];
+	if ($stat == 1){
+		$yo = \DB::query('SHOW CREATE TABLE test;')->execute();
+		echo $yo[0]['Create Table'];
+	} else {
+		echo 'Table "test" not yet created';	
+	}
+?>
+</div>
+<br>
