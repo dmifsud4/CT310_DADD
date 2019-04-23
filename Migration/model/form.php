@@ -64,6 +64,34 @@ class Form extends \Model {
         }
     }
     
+    public static function update_migrations() {
+        
+        foreach (\DB::select('migration_id')->from('migration')->where('status', 0)->execute() as $key => $elem) {
+            
+            $id = $elem['migration_id'];
+            if ($id < 10) {
+                $id = '00'.$id;
+            }
+            else if ($id < 100) {
+                $id = '0'.$id;
+            }
+            else {
+                $id = ''.$id;
+            }
+        
+            if ((include APPPATH.'migrations/'.$id.'_Migration.php') == true) {
+                $class = 'Migration_'.$id;
+                $class::up();
+                \DB::query('UPDATE migration SET status = 1 WHERE migration_id = '.$elem['migration_id'].';')->execute();
+            }
+            else {
+                die();
+            }
+            
+        }
+        
+    }
+    
 }
 
 ?>

@@ -24,5 +24,10 @@ class Controller_Migration extends Controller_Template {
         $_POST = array();
         Response::redirect("index/m3/migrations");
     }
+    
+    public function post_update_migrations() {
+        Form::update_migrations();
+        Response::redirect("index/m3/migrations");
+    }
 
 }

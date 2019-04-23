@@ -44,8 +44,10 @@
         
         Q: Where do I put the form open and form close??
     */
-    
+    echo Form::open(array('action' => 'index/migration/update_migrations', 'method' => 'post'));
     echo '<input type="submit" value="Update to Current">';
+//     echo Form::input('migrid', $id, array('id' => 'migr'.$id, 'class' => 'migrationsInput'));
+    echo Form::close();
     foreach ($result as $row) {
         echo Form::open(array('action' => 'index/migration/run_migrations', 'method' => 'post'));
         $id = $row['migration_id'];
